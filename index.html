@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>デブサミ2026 ｽﾀｯｸﾁｬﾝコミュニティのつくりかた</title>
+
+  <!-- Reveal.js Core CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
+  <!-- Theme: Black (Customize with 'white', 'league', 'beige', etc.) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/theme/black.min.css" id="theme">
+  <!-- Highlighting for code -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/highlight/monokai.min.css">
+
+  <style>
+    :root {
+      --primary: rgb(69, 90, 100);
+      --secondary: rgb(255, 248, 225);
+      --stack-yellow: var(--secondary);
+    }
+
+    .reveal {
+      background: var(--primary);
+      color: var(--secondary);
+    }
+
+    .reveal .slides section {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+    }
+
+    .reveal h1,
+    .reveal h2,
+    .reveal h3 {
+      color: var(--stack-yellow);
+      text-transform: none;
+    }
+
+    .reveal a {
+      color: var(--secondary);
+    }
+
+    .reveal .muted {
+      color: rgba(255, 248, 225, 0.7);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .profile {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .profile img {
+      width: 120px;
+      height: 120px;
+      border-radius: 18px;
+      object-fit: cover;
+      border: 3px solid rgba(255, 212, 0, 0.6);
+    }
+
+    .sketch {
+      width: 70%;
+      height: 320px;
+      margin: 0 auto;
+      background-color: var(--secondary);
+      mask-size: contain;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      -webkit-mask-size: contain;
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+    }
+
+    .sketch.open-community {
+      mask-image: url('assets/images/open_community.png');
+      -webkit-mask-image: url('assets/images/open_community.png');
+    }
+
+    /* Tile Layout */
+    .grid-tiles {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .tile {
+      background: rgba(69, 90, 100, 0.6);
+      border-radius: 8px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .tile img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+
+    /* Full Size Background */
+    .full-bg {
+      background-color: rgba(69, 90, 100, 0.8);
+      padding: 20px !important;
+      border-radius: 15px;
+    }
+
+    /* Chart container */
+    .chart-container {
+      position: relative;
+      margin: auto;
+      height: 400px;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="reveal">
+    <div class="slides">
+      <!-- 
+                Slides are written in Markdown. 
+                Separate slides with '---' 
+                Vertical slides with '--'
+            -->
+      <section data-markdown data-separator="^---" data-separator-vertical="^--">
+        <script type="text/template">
+                    <!-- .slide: data-background="assets/images/in_your_hands.jpg" data-background-size="cover" data-background-opacity="0.25" -->
+                    # ｽﾀｯｸﾁｬﾝ<br>コミュニティのつくりかた
+                    ### デブサミ2026
+                    <div class="muted" style="font-size: 0.7em;">「コミュニケーションロボットを、あなたの手に」</div>
+                    ---
+                    ## ゴール
+                    - ｽﾀｯｸﾁｬﾝとオープンソースハードウェアについて知ってもらう
+                    - 「TypeScriptで組み込み開発」の世界を身近に感じてもらう
+                    ---
+                    ## 自己紹介
+                    <div class="two-col">
+                      <div class="profile">
+                        <img src="assets/images/meganetaaan.jpg" alt="meganetaaan">
+                        <div>
+                          <div>ししかわ @meganetaaan</div>
+                          <div class="muted" style="font-size: 0.7em;">ｽﾀｯｸﾁｬﾝを作っている</div>
+                        </div>
+                      </div>
+                      <div class="profile">
+                        <img src="assets/images/stack_chan_twitter.jpg" alt="stack-chan">
+                        <div>
+                          <div>ｽﾀｯｸﾁｬﾝ @stack_chan</div>
+                          <div class="muted" style="font-size: 0.7em;">コミュニケーションロボット</div>
+                        </div>
+                      </div>
+                    </div>
+                    ---
+                    ## ｽﾀｯｸﾁｬﾝとは？
+                    - 「コミュニケーションロボットを、あなたの手に」
+                    - 改造・派生・収益化を歓迎する設計
+                    - 個人の思いつきから、コミュニティへ
+                    <p><img src="assets/images/stack_chan.jpg" alt="stack-chan" style="width: 55%; border-radius: 12px;"></p>
+                    ---
+                    ## ｽﾀｯｸﾁｬﾝの特徴「すべてがオープン」
+                    - オープンな仕様
+                    - オープンなプロセス
+                    - オープンなコミュニティ
+                    <div class="sketch open-community"></div>
+                    ---
+                    ## コミュニティの成長 (グラフ)
+                    <!-- Chart.js will be rendered here -->
+                    <div class="chart-container">
+                        <canvas data-chart="bar">
+                            <!--
+                            {
+                                "data": {
+                                    "labels": ["2021", "2022", "2023", "2024", "2025"],
+                                    "datasets": [{
+                                        "label": "GitHub Stars",
+                                        "data": [50, 200, 450, 800, 1200],
+                                        "backgroundColor": "rgba(255, 248, 225, 0.8)"
+                                    }]
+                                }
+                            }
+                            -->
+                        </canvas>
+                    </div>
+                    ---
+                    ## 爆発的な派生作品 (タイル表示)
+                    <div class="grid-tiles">
+                        <div class="tile">
+                            <img src="assets/images/stack_chan_desk.jpg" alt="Custom 1">
+                            <p style="font-size: 0.5em">改造例 A</p>
+                        </div>
+                        <div class="tile">
+                            <img src="assets/images/gundam.jpg" alt="Custom 2">
+                            <p style="font-size: 0.5em">改造例 B</p>
+                        </div>
+                        <div class="tile">
+                            <img src="assets/images/make.jpg" alt="Custom 3">
+                            <p style="font-size: 0.5em">改造例 C</p>
+                        </div>
+                        <div class="tile">
+                            <img src="assets/images/avatar.gif" alt="Custom 4">
+                            <p style="font-size: 0.5em">改造例 D</p>
+                        </div>
+                        <div class="tile">
+                            <img src="assets/images/outline.gif" alt="Custom 5">
+                            <p style="font-size: 0.5em">改造例 E</p>
+                        </div>
+                        <div class="tile">
+                            <img src="assets/images/mimic.gif" alt="Custom 6">
+                            <p style="font-size: 0.5em">改造例 F</p>
+                        </div>
+                    </div>
+                    ---
+                    ## コミュニティ分布 (散布図)
+                    <div class="chart-container">
+                        <canvas data-chart="scatter">
+                            <!--
+                            {
+                                "data": {
+                                    "datasets": [{
+                                        "label": "開発者 vs 子ども層",
+                                        "data": [
+                                            {"x": 10, "y": 20}, {"x": 15, "y": 25}, {"x": 40, "y": 60}, 
+                                            {"x": 60, "y": 80}, {"x": 80, "y": 90}
+                                        ],
+                                        "backgroundColor": "#FFD700"
+                                    }]
+                                },
+                                "options": {
+                                    "scales": {
+                                        "x": { "title": { "display": true, "text": "技術力" } },
+                                        "y": { "title": { "display": true, "text": "楽しさ" } }
+                                    }
+                                }
+                            }
+                            -->
+                        </canvas>
+                    </div>
+                    ---
+                    ## 動作の様子 (YouTube)
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                        <iframe 
+                            src="https://www.youtube.com/embed/6lO3xe_12So?si=xoEuPlS9BXM_HPNp" 
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    ---
+                    ## まとめ
+                    1. 改造を拒まない設計
+                    2. 失敗も共有する文化
+                    3. **「作りたい」が正義**
+                    ---
+                    # ありがとうございました
+                    ### Happy Making!
+                </script>
+      </section>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/markdown/markdown.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/highlight/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/notes/notes.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+    // Initialize Reveal.js
+    Reveal.initialize({
+      hash: true,
+      respondToHashChanges: true,
+      history: true,
+      center: true,
+      transition: 'slide', // none/fade/slide/convex/concave/zoom
+      plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      // Optional: Speaker View configuration
+      showNotes: false
+    }).then(() => {
+      if (window.Chart) {
+        Chart.defaults.color = 'rgb(255, 248, 225)';
+        Chart.defaults.borderColor = 'rgba(255, 248, 225, 0.25)';
+      }
+      // Process Charts after Reveal is ready
+      renderCharts();
+    });
+
+    function renderCharts() {
+      document.querySelectorAll('canvas[data-chart]').forEach(canvas => {
+        const type = canvas.getAttribute('data-chart');
+        const comment = canvas.nextElementSibling;
+        if (comment && comment.nodeType === Node.COMMENT_NODE) {
+          try {
+            const config = JSON.parse(comment.textContent);
+            new Chart(canvas, {
+              type: type,
+              data: config.data,
+              options: config.options || {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                  legend: { labels: { color: '#f5f7ff' } }
+                }
+              }
+            });
+          } catch (e) {
+            console.error('Failed to parse chart config', e);
+          }
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>
