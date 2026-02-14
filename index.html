@@ -239,6 +239,82 @@
       border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
+    .reveal .slides section.community-photo-slide {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0 !important;
+      overflow: hidden;
+    }
+
+    .community-photo-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-rows: repeat(2, minmax(0, 1fr));
+      gap: 6px;
+    }
+
+    .community-photo-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(115deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.22) 58%, rgba(0, 0, 0, 0.35) 100%);
+    }
+
+    .community-photo-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.08);
+      filter: saturate(1.08) contrast(1.08) brightness(0.82);
+    }
+
+    .community-photo-overlay {
+      position: absolute;
+      top: 14px;
+      left: 18px;
+      z-index: 2;
+      width: min(58%, 560px);
+      background: rgba(0, 0, 0, 0.62);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 14px;
+      padding: 12px 14px;
+      box-sizing: border-box;
+      backdrop-filter: blur(2px);
+    }
+
+    .community-photo-overlay h2,
+    .community-photo-overlay h3 {
+      margin: 0 0 8px;
+      color: var(--accent);
+      text-transform: none;
+      line-height: 1.16;
+      font-size: 0.76em;
+    }
+
+    .community-photo-overlay ul {
+      margin: 0;
+      padding-left: 1.08em;
+      font-size: 0.5em;
+      line-height: 1.34;
+    }
+
+    .community-photo-overlay li {
+      margin: 0.08em 0;
+    }
+
+    .community-photo-overlay .source {
+      margin-top: 8px;
+      font-size: 0.43em;
+      color: rgba(242, 242, 242, 0.78);
+    }
+
     .variant-loop {
       --tile-w: 190px;
       --tile-gap: 8px;
@@ -469,6 +545,30 @@
 
       .difficult-cloud img:hover {
         transform: rotate(0deg) scale(1.45);
+      }
+
+      .community-photo-bg {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: repeat(3, minmax(0, 1fr));
+        gap: 4px;
+      }
+
+      .community-photo-overlay {
+        top: 10px;
+        left: 10px;
+        width: calc(100% - 20px);
+        max-width: none;
+        padding: 10px 11px;
+      }
+
+      .community-photo-overlay h2,
+      .community-photo-overlay h3 {
+        font-size: 0.68em;
+        margin-bottom: 6px;
+      }
+
+      .community-photo-overlay ul {
+        font-size: 0.44em;
       }
     }
   </style>
@@ -807,91 +907,140 @@ Note:
 - ここは読み上げを最小化し、絵の情報量で熱量を伝える。
 - 「見た人が次に作る循環」が起きていると一言でまとめる。
 ---
-## コミュニティの広がり
-<ul>
-  <li>お誕生日会</li>
-  <li>メイカーフェア</li>
-  <li>ｽﾀｯｸﾁｬﾝフェス</li>
-  <li>もくもく会</li>
-  <li>学術分野</li>
-</ul>
-<div class="muted small">「作って使って見せる」循環が、活動の場を増やしている。</div>
+<!-- .slide: class="community-photo-slide" -->
+<div class="community-photo-bg">
+  <img src="assets/images/birthday_2nd.jpg" alt="birthday party">
+  <img src="assets/images/mftokyo_23.jpg" alt="maker faire tokyo">
+  <img src="assets/images/mfshenzhen1.jpg" alt="maker faire shenzhen">
+  <img src="assets/images/community/stackchan_summer_school.jpeg" alt="stack-chan summer school">
+  <img src="assets/images/community/gundam.jpg" alt="community creation">
+  <img src="assets/images/community/make.jpg" alt="community making">
+</div>
+<div class="community-photo-overlay">
+  <h2>コミュニティの広がり</h2>
+  <ul>
+    <li>お誕生日会</li>
+    <li>メイカーフェア</li>
+    <li>ｽﾀｯｸﾁｬﾝフェス</li>
+    <li>もくもく会</li>
+    <li>学術分野</li>
+  </ul>
+</div>
 
 Note:
 - ここから具体的な活動事例を5つテンポよく紹介する。
 - 各スライドは30秒前後で進行する。
 ---
-### お誕生日会
-<ul>
-  <li>ｽﾀｯｸﾁｬﾝの誕生日は 7月2日</li>
-  <li>毎年開催するオンリーイベントとして継続</li>
-  <li>LT・ビデオメッセージ・交流会でお祝いする文化を形成</li>
-</ul>
-<div class="event-grid">
+<!-- .slide: class="community-photo-slide" -->
+<div class="community-photo-bg">
+  <img src="assets/images/stack_chan_birthday.jpg" alt="stack-chan birthday">
   <img src="assets/images/birthday_1st.jpg" alt="stack-chan birthday 1st">
   <img src="assets/images/birthday_2nd.jpg" alt="stack-chan birthday 2nd">
+  <img src="assets/images/community/stack_chan_desk.jpg" alt="stack-chan desk">
+  <img src="assets/images/community/stackchan_summer_school.jpeg" alt="birthday event vibe">
+  <img src="assets/images/community/stack_chan.jpg" alt="stack-chan">
 </div>
-<div class="muted tiny">参考: tSKaigi 2024 スライド「コミュニティの活動: お誕生日会」</div>
+<div class="community-photo-overlay">
+  <h3>お誕生日会</h3>
+  <ul>
+    <li>ｽﾀｯｸﾁｬﾝの誕生日は 7月2日</li>
+    <li>毎年開催するオンリーイベントとして継続</li>
+    <li>LT・ビデオメッセージ・交流会でお祝いする文化を形成</li>
+  </ul>
+  <div class="source">参考: tSKaigi 2024 スライド「コミュニティの活動: お誕生日会」</div>
+</div>
 
 Note:
 - 1歳、2歳と年次で規模が拡大している流れを伝える。
 - 「お祝い」という参加しやすい入口が継続参加につながると補足する。
 ---
-### メイカーフェア
-<ul>
-  <li>東京・深セン・台北・ベイエリア・ローマへ展開</li>
-  <li>国内展示から海外展示へ活動範囲が拡大</li>
-  <li>ｽﾀｯｸﾁｬﾝと海を渡るコミュニティ運営を実践</li>
-</ul>
-<div class="event-grid">
-  <img src="assets/images/mftokyo_23.jpg" alt="maker faire tokyo">
+<!-- .slide: class="community-photo-slide" -->
+<div class="community-photo-bg">
+  <img src="assets/images/mftokyo_22.jpg" alt="maker faire tokyo 22">
+  <img src="assets/images/mftokyo_23.jpg" alt="maker faire tokyo 23">
   <img src="assets/images/mfshenzhen1.jpg" alt="maker faire shenzhen 1">
   <img src="assets/images/mfshenzhen2.jpg" alt="maker faire shenzhen 2">
-  <img src="assets/images/mftokyo_22.jpg" alt="maker faire tokyo 22">
+  <img src="assets/images/community/mfshenzhen1.jpg" alt="maker faire shenzhen community 1">
+  <img src="assets/images/community/mfshenzhen2.jpg" alt="maker faire shenzhen community 2">
 </div>
-<div class="muted tiny">参考: 「ｽﾀｯｸﾁｬﾝの今までとこれから2025」P.18</div>
+<div class="community-photo-overlay">
+  <h3>メイカーフェア</h3>
+  <ul>
+    <li>東京・深セン・台北・ベイエリア・ローマへ展開</li>
+    <li>国内展示から海外展示へ活動範囲が拡大</li>
+    <li>ｽﾀｯｸﾁｬﾝと海を渡るコミュニティ運営を実践</li>
+  </ul>
+  <div class="source">参考: 「ｽﾀｯｸﾁｬﾝの今までとこれから2025」P.18</div>
+</div>
 
 Note:
 - 海外展開の地名を全部読むのではなく「海外常連化」を強調する。
 - 運営メンバー主導で出展が回る点を一言添える。
 ---
-### ｽﾀｯｸﾁｬﾝフェス
-<ul>
-  <li>主催: PikoPiko Factory & 電子工作社</li>
-  <li>会場: 絶滅メディア博物館</li>
-  <li>参加サークルが作品展示・交流を行うコミュニティイベント</li>
-</ul>
-<div class="panel">
-  <div class="muted small">ｽﾀｯｸﾁｬﾝフェス !!!</div>
-  <div class="tiny">参加サークルが横断で集まり、展示と会話が混ざる場を形成</div>
+<!-- .slide: class="community-photo-slide" -->
+<div class="community-photo-bg">
+  <img src="assets/images/community/avatar.gif" alt="festival image 1">
+  <img src="assets/images/community/oshi_stackchan_5136.png" alt="festival image 2">
+  <img src="assets/images/community/obniz_chan_3072.jpg" alt="festival image 3">
+  <img src="assets/images/community/stakkochan_6628.jpg" alt="festival image 4">
+  <img src="assets/images/community/stackchan_powered_6781.jpg" alt="festival image 5">
+  <img src="assets/images/community/rex_chan.jpg" alt="festival image 6">
 </div>
-<div class="muted tiny">参考: 「ｽﾀｯｸﾁｬﾝの今までとこれから2025」P.22</div>
+<div class="community-photo-overlay">
+  <h3>ｽﾀｯｸﾁｬﾝフェス</h3>
+  <ul>
+    <li>主催: PikoPiko Factory & 電子工作社</li>
+    <li>会場: 絶滅メディア博物館</li>
+    <li>参加サークルが作品展示・交流を行うコミュニティイベント</li>
+  </ul>
+  <div class="source">参考: 「ｽﾀｯｸﾁｬﾝの今までとこれから2025」P.22</div>
+</div>
 
 Note:
 - 展示だけでなく、作り手同士の接続点として機能していると説明する。
 - 公式1人主導でなく、複数主催で回ることを強調する。
 ---
-### もくもく会
-<ul>
-  <li>2024/07 横浜, 11月 関内, 12月 赤坂</li>
-  <li>2025/02 関内, 03 大阪, 03 赤坂</li>
-  <li>2025/05 赤坂, 06 赤坂, 06 関内</li>
-</ul>
-<div class="muted small">地域と開催者が分散し、継続的に学び合う場が増えている。</div>
-<div class="muted tiny">参考: 「ｽﾀｯｸﾁｬﾝの今までとこれから2025」P.23</div>
+<!-- .slide: class="community-photo-slide" -->
+<div class="community-photo-bg">
+  <img src="assets/images/community/make.jpg" alt="mokumoku making 1">
+  <img src="assets/images/community/gundam.jpg" alt="mokumoku making 2">
+  <img src="assets/images/community/stack_chan_desk.jpg" alt="mokumoku making 3">
+  <img src="assets/images/community/stickc_chan_3238.jpg" alt="mokumoku making 4">
+  <img src="assets/images/community/stacksan_4058.jpg" alt="mokumoku making 5">
+  <img src="assets/images/community/wood_stackchan_6352.jpg" alt="mokumoku making 6">
+</div>
+<div class="community-photo-overlay">
+  <h3>もくもく会</h3>
+  <ul>
+    <li>2024/07 横浜, 11月 関内, 12月 赤坂</li>
+    <li>2025/02 関内, 03 大阪, 03 赤坂</li>
+    <li>2025/05 赤坂, 06 赤坂, 06 関内</li>
+  </ul>
+  <div class="source">参考: 「ｽﾀｯｸﾁｬﾝの今までとこれから2025」P.23</div>
+</div>
 
 Note:
 - 「定期開催」よりも「各地で自発開催」が価値だと説明する。
 - 初参加でも手を動かせる場として紹介する。
 ---
-### 学術分野
-<ul>
-  <li>非人型ロボットの印象変化における顔の有無と動作の影響 [中田 2025]</li>
-  <li>木材を用いた小型エージェントロボットの開発と印象評価 [佐藤 2025]</li>
-  <li>情報処理学会 インタラクション 2025 で発表</li>
-</ul>
-<div class="muted small">コミュニティ活動が、研究テーマと評価実験にも接続している。</div>
-<div class="muted tiny">参考: 「ｽﾀｯｸﾁｬﾝの今までとこれから2025」P.24</div>
+<!-- .slide: class="community-photo-slide" -->
+<div class="community-photo-bg">
+  <img src="assets/images/modules_contributed.drawio.png" alt="module ecosystem">
+  <img src="assets/images/community/wood_stackchan_6352.jpg" alt="academic field 1">
+  <img src="assets/images/community/ai_stackchan_minimal_5384.jpg" alt="academic field 2">
+  <img src="assets/images/community/stickc_chan_3238.jpg" alt="academic field 3">
+  <img src="assets/images/community/stackchan_powered_6781.jpg" alt="academic field 4">
+  <img src="assets/images/community/rex_chan.jpg" alt="academic field 5">
+</div>
+<div class="community-photo-overlay">
+  <h3>学術分野</h3>
+  <ul>
+    <li>非人型ロボットの印象変化における顔の有無と動作の影響 [中田 2025]</li>
+    <li>木材を用いた小型エージェントロボットの開発と印象評価 [佐藤 2025]</li>
+    <li>情報処理学会 インタラクション 2025 で発表</li>
+  </ul>
+  <div class="source">参考: 「ｽﾀｯｸﾁｬﾝの今までとこれから2025」P.24</div>
+</div>
 
 Note:
 - ホビー文脈だけでなく、学術文脈へ波及している点を強調する。
