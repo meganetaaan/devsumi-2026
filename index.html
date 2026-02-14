@@ -5,72 +5,151 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>デブサミ2026 ｽﾀｯｸﾁｬﾝコミュニティのつくりかた</title>
-
-  <!-- Reveal.js Core CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
-  <!-- Theme: Black (Customize with 'white', 'league', 'beige', etc.) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/theme/black.min.css" id="theme">
-  <!-- Highlighting for code -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/highlight/monokai.min.css">
 
   <style>
     :root {
-      --primary: rgb(69, 90, 100);
-      --secondary: rgb(255, 248, 225);
-      --stack-yellow: var(--secondary);
+      --bg: #111111;
+      --fg: #f2f2f2;
+      --accent: #ffd75e;
+      --muted: rgba(242, 242, 242, 0.72);
+      --panel: rgba(255, 255, 255, 0.08);
+      --panel-border: rgba(255, 215, 94, 0.35);
     }
 
     .reveal {
-      background: var(--primary);
-      color: var(--secondary);
+      background: var(--bg);
+      color: var(--fg);
+      font-size: 35px;
     }
 
     .reveal .slides section {
-      font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+      font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+      text-align: left;
     }
 
     .reveal h1,
     .reveal h2,
-    .reveal h3 {
-      color: var(--stack-yellow);
+    .reveal h3,
+    .reveal h4 {
+      color: var(--accent);
       text-transform: none;
+      letter-spacing: 0.01em;
     }
 
     .reveal a {
-      color: var(--secondary);
+      color: var(--accent);
     }
 
-    .reveal .muted {
-      color: rgba(255, 248, 225, 0.7);
+    .reveal ul,
+    .reveal ol {
+      line-height: 1.45;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .small {
+      font-size: 0.68em;
+    }
+
+    .tiny {
+      font-size: 0.56em;
+    }
+
+    .lead-title {
+      font-size: 1.72em;
+      line-height: 1.06;
+      margin-bottom: 0.15em;
+      letter-spacing: 0;
+    }
+
+    .reveal .slides section.community-vivid {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0 !important;
+      overflow: hidden;
+    }
+
+    .reveal .slides section.community-vivid>h2 {
+      position: absolute;
+      top: 14px;
+      left: 20px;
+      z-index: 2;
+      margin: 0;
+      text-shadow: 0 3px 10px rgba(0, 0, 0, 0.24);
+    }
+
+    .reveal .slides section.community-vivid>.variant-loop {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      z-index: 0;
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .reveal .slides section.community-vivid>.variant-loop::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: rgba(0, 0, 0, 0.24);
+      pointer-events: none;
     }
 
     .two-col {
       display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap: 24px;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 26px;
       align-items: center;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: 16px;
+      padding: 16px 18px;
     }
 
     .profile {
       display: grid;
-      grid-template-columns: 120px 1fr;
+      grid-template-columns: 110px 1fr;
       gap: 16px;
       align-items: center;
+      margin-bottom: 16px;
     }
 
     .profile img {
-      width: 120px;
-      height: 120px;
-      border-radius: 18px;
+      width: 110px;
+      height: 110px;
       object-fit: cover;
-      border: 3px solid rgba(255, 212, 0, 0.6);
+      border-radius: 14px;
+      border: 2px solid rgba(255, 215, 94, 0.55);
     }
 
-    .sketch {
-      width: 70%;
-      height: 320px;
-      margin: 0 auto;
-      background-color: var(--secondary);
+    .media {
+      width: 100%;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    .quote {
+      border-left: 5px solid var(--accent);
+      padding: 8px 0 8px 14px;
+      margin: 8px 0;
+      font-size: 0.88em;
+      line-height: 1.4;
+    }
+
+    .masked-element {
+      background-color: var(--accent);
       mask-size: contain;
       mask-repeat: no-repeat;
       mask-position: center;
@@ -79,247 +158,707 @@
       -webkit-mask-position: center;
     }
 
-    .sketch.open-community {
-      mask-image: url('assets/images/open_community.png');
-      -webkit-mask-image: url('assets/images/open_community.png');
+    .closed-robot2 {
+      width: 100%;
+      height: 290px;
+      mask-image: url('assets/images/closed_robot2.png');
+      -webkit-mask-image: url('assets/images/closed_robot2.png');
     }
 
-    /* Tile Layout */
-    .grid-tiles {
+    .why-closed {
+      width: 100%;
+      height: 290px;
+      mask-image: url('assets/images/why_closed.png');
+      -webkit-mask-image: url('assets/images/why_closed.png');
+    }
+
+    .closed-open-row {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
+      grid-template-columns: 1fr 56px 1fr;
+      align-items: center;
+      gap: 12px;
     }
 
-    .tile {
-      background: rgba(69, 90, 100, 0.6);
-      border-radius: 8px;
-      padding: 10px;
+    .closed-robot,
+    .open-robot {
+      width: 100%;
+      height: 220px;
+    }
+
+    .closed-robot {
+      mask-image: url('assets/images/closed_robot.png');
+      -webkit-mask-image: url('assets/images/closed_robot.png');
+    }
+
+    .open-robot {
+      mask-image: url('assets/images/open_robot.png');
+      -webkit-mask-image: url('assets/images/open_robot.png');
+    }
+
+    .ink-arch1,
+    .ink-modules {
+      width: 100%;
+      background-color: var(--accent);
+      mask-size: contain;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      -webkit-mask-size: contain;
+      -webkit-mask-repeat: no-repeat;
+      -webkit-mask-position: center;
+    }
+
+    .ink-arch1 {
+      height: 310px;
+      mask-image: url('assets/images/arch1.png');
+      -webkit-mask-image: url('assets/images/arch1.png');
+    }
+
+    .modules-readable {
+      width: 100%;
+      max-height: 330px;
+      object-fit: contain;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      background: #ffffff;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+
+    .event-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .event-grid img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .variant-loop {
+      --tile-w: 190px;
+      --tile-gap: 8px;
+      --segment-w: calc((var(--tile-w) * 6) + (var(--tile-gap) * 5));
+      position: relative;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .variant-loop-track {
       display: flex;
-      flex-direction: column;
+      gap: var(--tile-gap);
+      width: max-content;
+      height: 100%;
+      align-items: stretch;
+      position: relative;
+      z-index: 0;
+      will-change: transform;
+      animation: variant-loop-scroll 36s linear infinite;
+    }
+
+    .variant-grid {
+      flex: 0 0 auto;
+      width: var(--segment-w);
+      height: 100%;
+      min-height: 0;
+      display: grid;
+      grid-template-columns: repeat(6, var(--tile-w));
+      grid-template-rows: repeat(4, minmax(0, 1fr));
+      gap: var(--tile-gap);
+    }
+
+    .variant-link {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.18s ease, filter 0.18s ease;
+      transform: translate3d(0, 0, 0);
+    }
+
+    .variant-link:hover {
+      transform: translate3d(0, -2px, 0) scale(1.012);
+    }
+
+    .variant-link:focus-visible {
+      outline: 2px solid rgba(255, 215, 94, 0.9);
+      outline-offset: 2px;
+      transform: translate3d(0, -2px, 0) scale(1.012);
+    }
+
+    .variant-link img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.32);
+      background: rgba(0, 0, 0, 0.2);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, filter 0.18s ease;
+    }
+
+    .variant-link:hover img,
+    .variant-link:focus-visible img {
+      transform: scale(1.03);
+      border-color: rgba(255, 255, 255, 0.42);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+      filter: brightness(1.04);
+    }
+
+    @keyframes variant-loop-scroll {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(calc(-1 * (var(--segment-w) + var(--tile-gap))));
+      }
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .kpi-card {
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: 12px;
+      padding: 12px 14px;
+    }
+
+    .kpi-value {
+      color: var(--accent);
+      font-size: 1.1em;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .kpi-label {
+      font-size: 0.6em;
+      color: var(--muted);
+    }
+
+    .tag {
+      display: inline-block;
+      border: 1px solid var(--panel-border);
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 0.5em;
+      margin-right: 6px;
+      color: var(--accent);
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    .qr-box {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 24px;
       align-items: center;
     }
 
-    .tile img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 4px;
+    .qr-box img {
+      width: 240px;
+      border-radius: 12px;
+      border: 2px solid rgba(255, 215, 94, 0.5);
+      background: #fff;
     }
 
-    /* Full Size Background */
-    .full-bg {
-      background-color: rgba(69, 90, 100, 0.8);
-      padding: 20px !important;
-      border-radius: 15px;
+    .difficult-cloud {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 8px 10px;
+      align-items: start;
+      margin-top: 4px;
+      padding: 6px 8px 72px;
+      overflow: visible;
+      isolation: isolate;
     }
 
-    /* Chart container */
-    .chart-container {
-      position: relative;
-      margin: auto;
-      height: 400px;
+    .difficult-cloud img {
       width: 100%;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.34);
+      background: #1a1a1a;
+      position: relative;
+      z-index: 1;
+      cursor: zoom-in;
+      transform: rotate(var(--rot, 0deg)) scale(1);
+      transform-origin: center;
+      will-change: transform;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .difficult-cloud img:hover {
+      z-index: 20;
+      border-color: rgba(255, 215, 94, 0.9);
+      box-shadow: 0 18px 34px rgba(0, 0, 0, 0.55);
+      transform: translate(var(--hover-x, 0px), var(--hover-y, 0px)) rotate(0deg) scale(2.1);
+    }
+
+    .difficult1 {
+      grid-column: 1 / 5;
+      --rot: -2.4deg;
+      --hover-x: 100px;
+      --hover-y: 24px;
+      transform-origin: left top;
+    }
+
+    .difficult2 {
+      grid-column: 9 / 13;
+      margin-top: 6px;
+      --rot: 1.8deg;
+      --hover-x: -100px;
+      --hover-y: 20px;
+      transform-origin: right top;
+    }
+
+    .difficult3 {
+      grid-column: 3 / 7;
+      margin-top: -24px;
+      --rot: -1.3deg;
+      --hover-x: 72px;
+      --hover-y: 0px;
+      transform-origin: left center;
+    }
+
+    .difficult4 {
+      grid-column: 7 / 11;
+      margin-top: -30px;
+      --rot: 2.4deg;
+      --hover-x: -70px;
+      --hover-y: -4px;
+      transform-origin: right center;
+    }
+
+    @media (max-width: 900px) {
+      .variant-loop {
+        --tile-w: 120px;
+        --tile-gap: 6px;
+        width: 100%;
+        height: 100%;
+      }
+
+      .difficult-cloud {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        padding: 6px 0 12px;
+      }
+
+      .difficult-cloud img {
+        grid-column: auto !important;
+        margin-top: 0 !important;
+        --hover-x: 0px !important;
+        --hover-y: 0px !important;
+        transform-origin: center;
+      }
+
+      .difficult-cloud img:hover {
+        transform: rotate(0deg) scale(1.45);
+      }
     }
   </style>
 </head>
 
 <body>
-
   <div class="reveal">
     <div class="slides">
-      <!-- 
-                Slides are written in Markdown. 
-                Separate slides with '---' 
-                Vertical slides with '--'
-            -->
-      <section data-markdown data-separator="^---" data-separator-vertical="^--">
+      <section data-markdown data-separator="^---" data-separator-vertical="^--" data-separator-notes="^Note:">
         <script type="text/template">
-                    <!-- .slide: data-background="assets/images/in_your_hands.jpg" data-background-size="cover" data-background-opacity="0.25" -->
-                    # ｽﾀｯｸﾁｬﾝ<br>コミュニティのつくりかた
-                    ### デブサミ2026
-                    <div class="muted" style="font-size: 0.7em;">「コミュニケーションロボットを、あなたの手に」</div>
-                    ---
-                    ## ゴール
-                    - ｽﾀｯｸﾁｬﾝとオープンソースハードウェアについて知ってもらう
-                    - 「TypeScriptで組み込み開発」の世界を身近に感じてもらう
-                    ---
-                    ## 自己紹介
-                    <div class="two-col">
-                      <div class="profile">
-                        <img src="assets/images/meganetaaan.jpg" alt="meganetaaan">
-                        <div>
-                          <div>ししかわ @meganetaaan</div>
-                          <div class="muted" style="font-size: 0.7em;">ｽﾀｯｸﾁｬﾝを作っている</div>
-                        </div>
-                      </div>
-                      <div class="profile">
-                        <img src="assets/images/stack_chan_twitter.jpg" alt="stack-chan">
-                        <div>
-                          <div>ｽﾀｯｸﾁｬﾝ @stack_chan</div>
-                          <div class="muted" style="font-size: 0.7em;">コミュニケーションロボット</div>
-                        </div>
-                      </div>
-                    </div>
-                    ---
-                    ## ｽﾀｯｸﾁｬﾝとは？
-                    - 「コミュニケーションロボットを、あなたの手に」
-                    - 改造・派生・収益化を歓迎する設計
-                    - 個人の思いつきから、コミュニティへ
-                    <p><img src="assets/images/stack_chan.jpg" alt="stack-chan" style="width: 55%; border-radius: 12px;"></p>
-                    ---
-                    ## ｽﾀｯｸﾁｬﾝの特徴「すべてがオープン」
-                    - オープンな仕様
-                    - オープンなプロセス
-                    - オープンなコミュニティ
-                    <div class="sketch open-community"></div>
-                    ---
-                    ## コミュニティの成長 (グラフ)
-                    <!-- Chart.js will be rendered here -->
-                    <div class="chart-container">
-                        <canvas data-chart="bar">
-                            <!--
-                            {
-                                "data": {
-                                    "labels": ["2021", "2022", "2023", "2024", "2025"],
-                                    "datasets": [{
-                                        "label": "GitHub Stars",
-                                        "data": [50, 200, 450, 800, 1200],
-                                        "backgroundColor": "rgba(255, 248, 225, 0.8)"
-                                    }]
-                                }
-                            }
-                            -->
-                        </canvas>
-                    </div>
-                    ---
-                    ## 爆発的な派生作品 (タイル表示)
-                    <div class="grid-tiles">
-                        <div class="tile">
-                            <img src="assets/images/stack_chan_desk.jpg" alt="Custom 1">
-                            <p style="font-size: 0.5em">改造例 A</p>
-                        </div>
-                        <div class="tile">
-                            <img src="assets/images/gundam.jpg" alt="Custom 2">
-                            <p style="font-size: 0.5em">改造例 B</p>
-                        </div>
-                        <div class="tile">
-                            <img src="assets/images/make.jpg" alt="Custom 3">
-                            <p style="font-size: 0.5em">改造例 C</p>
-                        </div>
-                        <div class="tile">
-                            <img src="assets/images/avatar.gif" alt="Custom 4">
-                            <p style="font-size: 0.5em">改造例 D</p>
-                        </div>
-                        <div class="tile">
-                            <img src="assets/images/outline.gif" alt="Custom 5">
-                            <p style="font-size: 0.5em">改造例 E</p>
-                        </div>
-                        <div class="tile">
-                            <img src="assets/images/mimic.gif" alt="Custom 6">
-                            <p style="font-size: 0.5em">改造例 F</p>
-                        </div>
-                    </div>
-                    ---
-                    ## コミュニティ分布 (散布図)
-                    <div class="chart-container">
-                        <canvas data-chart="scatter">
-                            <!--
-                            {
-                                "data": {
-                                    "datasets": [{
-                                        "label": "開発者 vs 子ども層",
-                                        "data": [
-                                            {"x": 10, "y": 20}, {"x": 15, "y": 25}, {"x": 40, "y": 60}, 
-                                            {"x": 60, "y": 80}, {"x": 80, "y": 90}
-                                        ],
-                                        "backgroundColor": "#FFD700"
-                                    }]
-                                },
-                                "options": {
-                                    "scales": {
-                                        "x": { "title": { "display": true, "text": "技術力" } },
-                                        "y": { "title": { "display": true, "text": "楽しさ" } }
-                                    }
-                                }
-                            }
-                            -->
-                        </canvas>
-                    </div>
-                    ---
-                    ## 動作の様子 (YouTube)
-                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-                        <iframe 
-                            src="https://www.youtube.com/embed/6lO3xe_12So?si=xoEuPlS9BXM_HPNp" 
-                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    ---
-                    ## まとめ
-                    1. 改造を拒まない設計
-                    2. 失敗も共有する文化
-                    3. **「作りたい」が正義**
-                    ---
-                    # ありがとうございました
-                    ### Happy Making!
-                </script>
+<!-- .slide: data-background-image="assets/images/in_your_hands.jpg" data-background-size="cover" data-background-opacity="0.24" -->
+# <span class="lead-title">ｽﾀｯｸﾁｬﾝ<br>コミュニティのつくりかた</span>
+### Developers Summit 2026
+<div class="muted tiny">ししかわ / ｽﾀｯｸﾁｬﾝコミュニティ代表</div>
+---
+## Agenda
+1. ｽﾀｯｸﾁｬﾝとは
+2. デモ
+3. ｽﾀｯｸﾁｬﾝを作ったきっかけ
+4. 全てをオープンにする理由
+5. 自走するコミュニティ
+<div class="muted small">持ち帰り: プロダクト自身の魅力＋コミュニティ設計が寿命を伸ばす</div>
+
+---
+## ｽﾀｯｸﾁｬﾝとは
+<div class="two-col">
+  <div>
+    <ul>
+      <li>ししかわが開発するオープンソースのロボット</li>
+      <li>「コミュニケーションロボットを、あなたの手に。」</li>
+    </ul>
+    <div class="tag">🖐手のひらサイズ</div><div class="tag">💬会話</div><div class="tag">😀首振り</div>
+  </div>
+  <div class="panel">
+    <div class="profile">
+      <img src="assets/images/meganetaaan.jpg" alt="ししかわ">
+      <div>
+        <div>ししかわ <a href="https://x.com/sskw_san">@sskw_san</a></div>
+        <div class="muted tiny">ｽﾀｯｸﾁｬﾝコミュニティ代表</div>
+      </div>
+    </div>
+    <img class="media" src="assets/images/stack_chan.jpg" alt="stack-chan">
+  </div>
+</div>
+---
+## DEMO！
+---
+## ｽﾀｯｸﾁｬﾝの仕組み
+<div class="two-col">
+  <div>
+    <ul>
+      <li>音声認識 / 音声合成はサーバ側</li>
+      <li>端末側は音声I/O、顔描画、首振り（2モーター）</li>
+      <li>モーター/音声認識・合成/LLMが入れ替え可能にする</li>
+    </ul>
+  </div>
+  <div>
+    <div class="ink-arch1" aria-label="architecture diagram"></div>
+  </div>
+</div>
+---
+## きっかけ: コミュニケーションロボットの死
+<ul>
+  <li>ベンダーの死＝ロボットの死</li>
+  <ul>
+    <li>ハード: 修理・部品交換が難しくなる</li>
+    <li>ソフト: クラウド停止で会話不能に</li>
+  </ul>
+</ul>
+<div class="masked-element closed-robot2"></div>
+---
+## 解決策: オープンなロボットを作ろう
+<div class="closed-open-row">
+  <div class="masked-element closed-robot"></div>
+  <div class="center">👉</div>
+  <div class="masked-element open-robot"></div>
+</div>
+<div class="muted small">「誰もがユーザであり、同時に開発者でもある」状態を作る</div>
+---
+## 3つの"オープン"でコミュニティを育てる
+<ul>
+  <li>オープンな仕様</li>
+  <li>オープンなプロセス</li>
+  <li>オープンなマインド</li>
+</ul>
+---
+## オープンな仕様
+<!-- <div class="two-col"> -->
+<div>
+  <div>
+    <ul>
+      <li>基板・外装・ソフトを Apache 2.0 ライセンスで公開</li>
+      <li>👉利用・改造・再配布・商用利用がしやすい</li>
+    </ul>
+  </div>
+  <div class="panel center">
+    <img src="assets/images/board.png" alt="board" style="width: 30%; margin-right: 8px; vertical-align: middle;">
+    <img src="assets/images/case.jpg" alt="case" style="width: 30%; margin-right: 8px; vertical-align: middle;">
+    <img src="assets/images/oshwa.png" alt="オープンソースハードウェア協会認定" style="width: 30%; vertical-align: middle;">
+  </div>
+</div>
+---
+## オープンなプロセス
+<div>
+  <div>
+    <ul>
+      <li>X / YouTube で制作過程を共有</li>
+      <li>失敗も積極的に公開</li>
+      <li>👉難しいことを「難しい」と言える雰囲気</li>
+    </ul>
+  </div>
+  <div>
+    <div class="muted tiny">X検索: 「ｽﾀｯｸﾁｬﾝ 難しい」(ホバーで拡大)</div>
+    <div class="difficult-cloud">
+      <img class="difficult1" src="assets/images/difficult1.png" alt="difficult tweet 1">
+      <img class="difficult2" src="assets/images/difficult2.png" alt="difficult tweet 2">
+      <img class="difficult3" src="assets/images/diffucult3.png" alt="difficult tweet 3">
+      <img class="difficult4" src="assets/images/difficult4.png" alt="difficult tweet 4">
+    </div>
+  </div>
+</div>
+---
+## オープンなマインド
+<ul>
+  <li>誰でもウェルカムで、参加しやすい環境を作る</li>
+  <li>ルールはシンプルに保つ</li>
+  <ul>
+    <li>コミュニティ行動規範</li>
+    <li>二次創作ガイドライン</li>
+  </ul>
+  <!-- TODO: ガイドラインのスクショ -->
+</ul>
+---
+<!-- .slide: class="community-vivid" -->
+## 広がるコミュニティ
+<div class="variant-loop">
+  <div class="variant-loop-track">
+    <div class="variant-grid">
+      <a class="variant-link" href="https://speakerdeck.com/ciniml/rusty-stack-channosusume" target="_blank" rel="noopener noreferrer" title="Rusty Stack-chan">
+        <img src="assets/images/community/avatar.gif" alt="Rusty Stack-chan">
+      </a>
+      <a class="variant-link" href="https://dev.protopedia.net/prototype/5136" target="_blank" rel="noopener noreferrer" title="推しｽﾀｯｸﾁｬﾝ">
+        <img src="assets/images/community/oshi_stackchan_5136.png" alt="推しｽﾀｯｸﾁｬﾝ">
+      </a>
+      <a class="variant-link" href="https://dev.protopedia.net/prototype/3072" target="_blank" rel="noopener noreferrer" title="ｵﾌﾞﾅｲｽﾞﾁｬﾝ">
+        <img src="assets/images/community/obniz_chan_3072.jpg" alt="ｵﾌﾞﾅｲｽﾞﾁｬﾝ">
+      </a>
+      <a class="variant-link" href="https://dev.protopedia.net/prototype/3068" target="_blank" rel="noopener noreferrer" title="ﾏｲｸﾛﾋﾞｯﾄﾁｬﾝ">
+        <img src="assets/images/community/micro_bit_chan_3068.jpg" alt="ﾏｲｸﾛﾋﾞｯﾄﾁｬﾝ">
+      </a>
+      <a class="variant-link" href="https://dev.protopedia.net/prototype/6352" target="_blank" rel="noopener noreferrer" title="ｳｯﾄﾞｽﾀｯｸﾁｬﾝ">
+        <img src="assets/images/community/wood_stackchan_6352.jpg" alt="ｳｯﾄﾞｽﾀｯｸﾁｬﾝ">
+      </a>
+      <a class="variant-link" href="https://qiita.com/B-SKY-Lab/items/dd0fac56acc10b8f6887" target="_blank" rel="noopener noreferrer" title="ﾀｲﾘﾝﾁｬﾝ">
+        <img src="assets/images/community/tairinchan.webp" alt="ﾀｲﾘﾝﾁｬﾝ">
+      </a>
+      <a class="variant-link" href="https://dev.protopedia.net/prototype/4842" target="_blank" rel="noopener noreferrer" title="ｽﾀｯｸﾁｬﾝの兄">
+        <img src="assets/images/community/stackchan_no_ani_4842.jpg" alt="ｽﾀｯｸﾁｬﾝの兄">
+      </a>
+      <a class="variant-link" href="https://dev.protopedia.net/prototype/6781" target="_blank" rel="noopener noreferrer" title="ｽﾀｯｸﾁｬﾝぱわーど">
+        <img src="assets/images/community/stackchan_powered_6781.jpg" alt="ｽﾀｯｸﾁｬﾝぱわーど">
+      </a>
+      <a class="variant-link" href="https://dev.protopedia.net/prototype/6628" target="_blank" rel="noopener noreferrer" title="スタッコチャン">
+        <img src="assets/images/community/stakkochan_6628.jpg" alt="スタッコチャン">
+      </a>
+      <a class="variant-link" href="https://dev.protopedia.net/prototype/5384" target="_blank" rel="noopener noreferrer" title="AIｽﾀｯｸﾁｬﾝ - ミニマル">
+        <img src="assets/images/community/ai_stackchan_minimal_5384.jpg" alt="AIｽﾀｯｸﾁｬﾝ - ミニマル">
+      </a>
+      <a class="variant-link" href="https://dev.protopedia.net/prototype/4548" target="_blank" rel="noopener noreferrer" title="ﾚｯｸｽﾁｬﾝ">
+        <img src="assets/images/community/rex_chan.jpg" alt="ﾚｯｸｽﾁｬﾝ">
+      </a>
+      <a class="variant-link" href="https://dev.protopedia.net/prototype/4058" target="_blank" rel="noopener noreferrer" title="ｽﾀｯｸｻﾝ">
+        <img src="assets/images/community/stacksan_4058.jpg" alt="ｽﾀｯｸｻﾝ">
+      </a>
+      <a class="variant-link" href="https://dev.protopedia.net/prototype/3238" target="_blank" rel="noopener noreferrer" title="スティックCチャン">
+        <img src="assets/images/community/stickc_chan_3238.jpg" alt="スティックCチャン">
+      </a>
+      <a class="variant-link" href="https://dev.protopedia.net/prototype/3132" target="_blank" rel="noopener noreferrer" title="ｽﾀﾝｸﾁｬﾝ">
+        <img src="assets/images/community/stankchan_3132.jpg" alt="ｽﾀﾝｸﾁｬﾝ">
+      </a>
+      <a class="variant-link" href="https://x.com/ciniml/status/1312678846076915718" target="_blank" rel="noopener noreferrer" title="ﾜｲｵﾀｰﾐﾅﾙﾁｬﾝ">
+        <img src="assets/images/community/stack_chan.jpg" alt="ﾜｲｵﾀｰﾐﾅﾙﾁｬﾝ">
+      </a>
+      <a class="variant-link" href="https://note.com/syumme/n/ncdc4fd9133be" target="_blank" rel="noopener noreferrer" title="ダンボールｽﾀｯｸﾁｬﾝ">
+        <img src="assets/images/community/stack_chan_desk.jpg" alt="ダンボールｽﾀｯｸﾁｬﾝ">
+      </a>
+      <a class="variant-link" href="https://qiita.com/star_f/items/17d5fa7657c95d642fd8" target="_blank" rel="noopener noreferrer" title="ｽﾀｯｸﾁｬﾝ夏の学校">
+        <img src="assets/images/community/stackchan_summer_school.jpeg" alt="ｽﾀｯｸﾁｬﾝ夏の学校">
+      </a>
+      <a class="variant-link" href="https://speakerdeck.com/ciniml/rusty-stack-channosusume" target="_blank" rel="noopener noreferrer" title="Rusty Stack-chan">
+        <img src="assets/images/community/avatar.gif" alt="Rusty Stack-chan">
+      </a>
+      <a class="variant-link" href="https://dev.protopedia.net/prototype/5136" target="_blank" rel="noopener noreferrer" title="推しｽﾀｯｸﾁｬﾝ">
+        <img src="assets/images/community/oshi_stackchan_5136.png" alt="推しｽﾀｯｸﾁｬﾝ">
+      </a>
+      <a class="variant-link" href="https://dev.protopedia.net/prototype/3072" target="_blank" rel="noopener noreferrer" title="ｵﾌﾞﾅｲｽﾞﾁｬﾝ">
+        <img src="assets/images/community/obniz_chan_3072.jpg" alt="ｵﾌﾞﾅｲｽﾞﾁｬﾝ">
+      </a>
+      <a class="variant-link" href="https://dev.protopedia.net/prototype/3068" target="_blank" rel="noopener noreferrer" title="ﾏｲｸﾛﾋﾞｯﾄﾁｬﾝ">
+        <img src="assets/images/community/micro_bit_chan_3068.jpg" alt="ﾏｲｸﾛﾋﾞｯﾄﾁｬﾝ">
+      </a>
+      <a class="variant-link" href="https://dev.protopedia.net/prototype/6352" target="_blank" rel="noopener noreferrer" title="ｳｯﾄﾞｽﾀｯｸﾁｬﾝ">
+        <img src="assets/images/community/wood_stackchan_6352.jpg" alt="ｳｯﾄﾞｽﾀｯｸﾁｬﾝ">
+      </a>
+      <a class="variant-link" href="https://qiita.com/B-SKY-Lab/items/dd0fac56acc10b8f6887" target="_blank" rel="noopener noreferrer" title="ﾀｲﾘﾝﾁｬﾝ">
+        <img src="assets/images/community/tairinchan.webp" alt="ﾀｲﾘﾝﾁｬﾝ">
+      </a>
+      <a class="variant-link" href="https://dev.protopedia.net/prototype/4842" target="_blank" rel="noopener noreferrer" title="ｽﾀｯｸﾁｬﾝの兄">
+        <img src="assets/images/community/stackchan_no_ani_4842.jpg" alt="ｽﾀｯｸﾁｬﾝの兄">
+      </a>
+    </div>
+    <div class="variant-grid" aria-hidden="true">
+      <a class="variant-link" href="https://speakerdeck.com/ciniml/rusty-stack-channosusume" target="_blank" rel="noopener noreferrer" title="Rusty Stack-chan">
+        <img src="assets/images/community/avatar.gif" alt="Rusty Stack-chan">
+      </a>
+      <a class="variant-link" href="https://dev.protopedia.net/prototype/5136" target="_blank" rel="noopener noreferrer" title="推しｽﾀｯｸﾁｬﾝ">
+        <img src="assets/images/community/oshi_stackchan_5136.png" alt="推しｽﾀｯｸﾁｬﾝ">
+      </a>
+      <a class="variant-link" href="https://dev.protopedia.net/prototype/3072" target="_blank" rel="noopener noreferrer" title="ｵﾌﾞﾅｲｽﾞﾁｬﾝ">
+        <img src="assets/images/community/obniz_chan_3072.jpg" alt="ｵﾌﾞﾅｲｽﾞﾁｬﾝ">
+      </a>
+      <a class="variant-link" href="https://dev.protopedia.net/prototype/3068" target="_blank" rel="noopener noreferrer" title="ﾏｲｸﾛﾋﾞｯﾄﾁｬﾝ">
+        <img src="assets/images/community/micro_bit_chan_3068.jpg" alt="ﾏｲｸﾛﾋﾞｯﾄﾁｬﾝ">
+      </a>
+      <a class="variant-link" href="https://dev.protopedia.net/prototype/6352" target="_blank" rel="noopener noreferrer" title="ｳｯﾄﾞｽﾀｯｸﾁｬﾝ">
+        <img src="assets/images/community/wood_stackchan_6352.jpg" alt="ｳｯﾄﾞｽﾀｯｸﾁｬﾝ">
+      </a>
+      <a class="variant-link" href="https://qiita.com/B-SKY-Lab/items/dd0fac56acc10b8f6887" target="_blank" rel="noopener noreferrer" title="ﾀｲﾘﾝﾁｬﾝ">
+        <img src="assets/images/community/tairinchan.webp" alt="ﾀｲﾘﾝﾁｬﾝ">
+      </a>
+      <a class="variant-link" href="https://dev.protopedia.net/prototype/4842" target="_blank" rel="noopener noreferrer" title="ｽﾀｯｸﾁｬﾝの兄">
+        <img src="assets/images/community/stackchan_no_ani_4842.jpg" alt="ｽﾀｯｸﾁｬﾝの兄">
+      </a>
+      <a class="variant-link" href="https://dev.protopedia.net/prototype/6781" target="_blank" rel="noopener noreferrer" title="ｽﾀｯｸﾁｬﾝぱわーど">
+        <img src="assets/images/community/stackchan_powered_6781.jpg" alt="ｽﾀｯｸﾁｬﾝぱわーど">
+      </a>
+      <a class="variant-link" href="https://dev.protopedia.net/prototype/6628" target="_blank" rel="noopener noreferrer" title="スタッコチャン">
+        <img src="assets/images/community/stakkochan_6628.jpg" alt="スタッコチャン">
+      </a>
+      <a class="variant-link" href="https://dev.protopedia.net/prototype/5384" target="_blank" rel="noopener noreferrer" title="AIｽﾀｯｸﾁｬﾝ - ミニマル">
+        <img src="assets/images/community/ai_stackchan_minimal_5384.jpg" alt="AIｽﾀｯｸﾁｬﾝ - ミニマル">
+      </a>
+      <a class="variant-link" href="https://dev.protopedia.net/prototype/4548" target="_blank" rel="noopener noreferrer" title="ﾚｯｸｽﾁｬﾝ">
+        <img src="assets/images/community/rex_chan.jpg" alt="ﾚｯｸｽﾁｬﾝ">
+      </a>
+      <a class="variant-link" href="https://dev.protopedia.net/prototype/4058" target="_blank" rel="noopener noreferrer" title="ｽﾀｯｸｻﾝ">
+        <img src="assets/images/community/stacksan_4058.jpg" alt="ｽﾀｯｸｻﾝ">
+      </a>
+      <a class="variant-link" href="https://dev.protopedia.net/prototype/3238" target="_blank" rel="noopener noreferrer" title="スティックCチャン">
+        <img src="assets/images/community/stickc_chan_3238.jpg" alt="スティックCチャン">
+      </a>
+      <a class="variant-link" href="https://dev.protopedia.net/prototype/3132" target="_blank" rel="noopener noreferrer" title="ｽﾀﾝｸﾁｬﾝ">
+        <img src="assets/images/community/stankchan_3132.jpg" alt="ｽﾀﾝｸﾁｬﾝ">
+      </a>
+      <a class="variant-link" href="https://x.com/ciniml/status/1312678846076915718" target="_blank" rel="noopener noreferrer" title="ﾜｲｵﾀｰﾐﾅﾙﾁｬﾝ">
+        <img src="assets/images/community/stack_chan.jpg" alt="ﾜｲｵﾀｰﾐﾅﾙﾁｬﾝ">
+      </a>
+      <a class="variant-link" href="https://note.com/syumme/n/ncdc4fd9133be" target="_blank" rel="noopener noreferrer" title="ダンボールｽﾀｯｸﾁｬﾝ">
+        <img src="assets/images/community/stack_chan_desk.jpg" alt="ダンボールｽﾀｯｸﾁｬﾝ">
+      </a>
+      <a class="variant-link" href="https://qiita.com/star_f/items/17d5fa7657c95d642fd8" target="_blank" rel="noopener noreferrer" title="ｽﾀｯｸﾁｬﾝ夏の学校">
+        <img src="assets/images/community/stackchan_summer_school.jpeg" alt="ｽﾀｯｸﾁｬﾝ夏の学校">
+      </a>
+      <a class="variant-link" href="https://speakerdeck.com/ciniml/rusty-stack-channosusume" target="_blank" rel="noopener noreferrer" title="Rusty Stack-chan">
+        <img src="assets/images/community/avatar.gif" alt="Rusty Stack-chan">
+      </a>
+      <a class="variant-link" href="https://dev.protopedia.net/prototype/5136" target="_blank" rel="noopener noreferrer" title="推しｽﾀｯｸﾁｬﾝ">
+        <img src="assets/images/community/oshi_stackchan_5136.png" alt="推しｽﾀｯｸﾁｬﾝ">
+      </a>
+      <a class="variant-link" href="https://dev.protopedia.net/prototype/3072" target="_blank" rel="noopener noreferrer" title="ｵﾌﾞﾅｲｽﾞﾁｬﾝ">
+        <img src="assets/images/community/obniz_chan_3072.jpg" alt="ｵﾌﾞﾅｲｽﾞﾁｬﾝ">
+      </a>
+      <a class="variant-link" href="https://dev.protopedia.net/prototype/3068" target="_blank" rel="noopener noreferrer" title="ﾏｲｸﾛﾋﾞｯﾄﾁｬﾝ">
+        <img src="assets/images/community/micro_bit_chan_3068.jpg" alt="ﾏｲｸﾛﾋﾞｯﾄﾁｬﾝ">
+      </a>
+      <a class="variant-link" href="https://dev.protopedia.net/prototype/6352" target="_blank" rel="noopener noreferrer" title="ｳｯﾄﾞｽﾀｯｸﾁｬﾝ">
+        <img src="assets/images/community/wood_stackchan_6352.jpg" alt="ｳｯﾄﾞｽﾀｯｸﾁｬﾝ">
+      </a>
+      <a class="variant-link" href="https://qiita.com/B-SKY-Lab/items/dd0fac56acc10b8f6887" target="_blank" rel="noopener noreferrer" title="ﾀｲﾘﾝﾁｬﾝ">
+        <img src="assets/images/community/tairinchan.webp" alt="ﾀｲﾘﾝﾁｬﾝ">
+      </a>
+      <a class="variant-link" href="https://dev.protopedia.net/prototype/4842" target="_blank" rel="noopener noreferrer" title="ｽﾀｯｸﾁｬﾝの兄">
+        <img src="assets/images/community/stackchan_no_ani_4842.jpg" alt="ｽﾀｯｸﾁｬﾝの兄">
+      </a>
+    </div>
+  </div>
+</div>
+---
+## 補足: あれもこれもｽﾀｯｸﾁｬﾝ
+<ul>
+  <li>ダンボールでもｽﾀｯｸﾁｬﾝ</li>
+  <li>ボディが無くてもｽﾀｯｸﾁｬﾝ</li>
+  <li>M5Stackじゃなくてもｽﾀｯｸﾁｬﾝ</li>
+</ul>
+<!-- TODO: OSSというより共有IP？ -->
+---
+## 事実で見るコミュニティの広がり
+<div class="kpi-grid">
+  <div class="kpi-card"><div class="kpi-value">Discord 1300+</div><div class="kpi-label">コミュニティメンバー</div></div>
+  <div class="kpi-card"><div class="kpi-value">1000+</div><div class="kpi-label">稼働台数（把握分）</div></div>
+  <div class="kpi-card"><div class="kpi-value">Kickstarter 3500+</div><div class="kpi-label">支援者数</div></div>
+  <div class="kpi-card"><div class="kpi-value">2026/04</div><div class="kpi-label">M5Stack完成品販売開始</div></div>
+</div>
+<ul>
+  <li>活動量も増加: もくもく会9回、Maker Faire 5回、NT 4回、学会2回</li>
+</ul>
+<div class="muted small">把握値ベース。実際はさらに多い可能性があります。</div>
+---
+## 場の広がり: 国内から海外へ
+<div class="two-col">
+  <div>
+    <ul>
+      <li>東京・松戸・函館・金沢・大阪</li>
+      <li>深セン・台北・ベイエリア・ローマ</li>
+      <li>展示だけでなく、学会発表や生活の場にも展開</li>
+    </ul>
+    <div class="muted small">「作った人が見せる」「見た人が次に作る」が回り始める</div>
+  </div>
+  <div class="event-grid">
+    <img src="assets/images/mftokyo_22.jpg" alt="mftokyo22">
+    <img src="assets/images/mftokyo_23.jpg" alt="mftokyo23">
+    <img src="assets/images/mfshenzhen1.jpg" alt="mfshenzhen1">
+    <img src="assets/images/mfshenzhen2.jpg" alt="mfshenzhen2">
+  </div>
+</div>
+---
+## 自走するコミュニティ運営
+<ul>
+  <li>私はボトルネックにならない運営を徹底</li>
+  <li>2025年は「ししかわ主催ゼロ」でもイベント数は過去最多</li>
+  <li>運営のバトンが自然に渡る状態を作る</li>
+  <li>作る人と使う人が分断されない場を守る</li>
+</ul>
+<div class="muted small">私が風邪で寝ても、コミュニティは動く状態を目指す。</div>
+---
+## 補足: オープン仕様が生む派生
+<div class="two-col">
+  <div>
+    <ul>
+      <li>実装は Moddable / UIFlow / Arduino など複線化</li>
+      <li>ベンダー置き換え可能なアーキテクチャを試行</li>
+      <li>一部ユーザはスマホLLMでスタンドアロン化を追求</li>
+    </ul>
+    <div class="muted small">本編では触れず、質疑で深掘りする想定。</div>
+  </div>
+  <div>
+    <img class="modules-readable" src="assets/images/modules_contributed.drawio.png" alt="module ecosystem diagram">
+  </div>
+</div>
+---
+## まとめ
+<ul>
+  <li>課題: ベンダー依存でロボットが止まる</li>
+  <li>解決: 全てをオープンにし、誰もが開発・保守できる状態にする</li>
+  <li>鍵: 機能だけでなく、コミュニティ設計</li>
+</ul>
+<div class="muted small">「かわいい」で終わらず、「続く仕組み」まで持ち帰ってください。</div>
+---
+## 参加 / 制作 / 共有へ
+<div class="qr-box">
+  <img src="assets/images/qr_stack_chan.png" alt="stack-chan qr">
+  <div>
+    <h3>コミュニティに参加してください</h3>
+    <ul>
+      <li>GitHub: stack-chan/stack-chan</li>
+      <li>Discord / X ハッシュタグ #ｽﾀｯｸﾁｬﾝ</li>
+      <li>あなたの「作ってみた」を待っています</li>
+    </ul>
+  </div>
+</div>
+<div class="center" style="margin-top: 12px;">ありがとうございました</div>
+        </script>
       </section>
     </div>
   </div>
 
-  <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/markdown/markdown.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/highlight/highlight.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/notes/notes.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <script>
-    // Initialize Reveal.js
     Reveal.initialize({
       hash: true,
-      respondToHashChanges: true,
       history: true,
       center: true,
-      transition: 'slide', // none/fade/slide/convex/concave/zoom
+      transition: 'slide',
       plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
-      // Optional: Speaker View configuration
       showNotes: false
-    }).then(() => {
-      if (window.Chart) {
-        Chart.defaults.color = 'rgb(255, 248, 225)';
-        Chart.defaults.borderColor = 'rgba(255, 248, 225, 0.25)';
-      }
-      // Process Charts after Reveal is ready
-      renderCharts();
     });
-
-    function renderCharts() {
-      document.querySelectorAll('canvas[data-chart]').forEach(canvas => {
-        const type = canvas.getAttribute('data-chart');
-        const comment = canvas.nextElementSibling;
-        if (comment && comment.nodeType === Node.COMMENT_NODE) {
-          try {
-            const config = JSON.parse(comment.textContent);
-            new Chart(canvas, {
-              type: type,
-              data: config.data,
-              options: config.options || {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                  legend: { labels: { color: '#f5f7ff' } }
-                }
-              }
-            });
-          } catch (e) {
-            console.error('Failed to parse chart config', e);
-          }
-        }
-      });
-    }
   </script>
 </body>
 
