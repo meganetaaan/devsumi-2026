@@ -53,6 +53,11 @@ jobs:
       - name: Build slides
         run: npm run build -- --base "${{ steps.base-path.outputs.value }}"
 
+      - name: Copy static assets for markdown template slides
+        run: |
+          mkdir -p dist/assets
+          cp -a assets/. dist/assets/
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
