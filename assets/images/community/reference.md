@@ -15,3 +15,7 @@
 * [ﾜｲｵﾀｰﾐﾅﾙﾁｬﾝ](https://x.com/ciniml/status/1312678846076915718)
 * [ダンボールｽﾀｯｸﾁｬﾝ](https://note.com/syumme/n/ncdc4fd9133be)
 * [ｽﾀｯｸﾁｬﾝ夏の学校](https://qiita.com/star_f/items/17d5fa7657c95d642fd8)
+* [そこにいるだけで癒やされる](https://x.com/robo8080/status/1451082478412648451)
+* [ﾍﾞﾋﾞｰｽﾀｯｸﾁｬﾝ](https://x.com/Ou0i3/status/2022526750664925219)
+* [もくもく会](https://x.com/sylacwa/status/2022597641855734054/)
+* [JP Tour Tokyo 2024](https://x.com/Sumi_Azuma/status/1784870024475234394)
