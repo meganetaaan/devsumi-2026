@@ -85,6 +85,43 @@
       text-shadow: 0 3px 10px rgba(0, 0, 0, 0.24);
     }
 
+    .reveal .slides section.community-vivid>ul {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 3;
+      width: min(86%, 980px);
+      margin: 0;
+      padding: 16px 22px 16px 34px;
+      isolation: isolate;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.32);
+      text-align: left;
+    }
+
+    .reveal .slides section.community-vivid>ul::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      border-radius: inherit;
+      background: rgba(0, 0, 0, 0.54);
+      backdrop-filter: blur(2px) saturate(120%);
+      -webkit-backdrop-filter: blur(2px) saturate(120%);
+    }
+
+    .reveal .slides section.community-vivid>ul>li {
+      position: relative;
+      z-index: 1;
+    }
+
+    .reveal .slides section.community-vivid>ul>li::marker {
+      color: var(--accent);
+    }
+
     .reveal .slides section.community-vivid>.variant-loop {
       position: absolute;
       inset: 0;
@@ -118,6 +155,55 @@
       padding: 16px 18px;
     }
 
+    .reveal .slides section.stackchan-intro-fullscreen {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0 !important;
+      overflow: hidden;
+    }
+
+    .reveal .slides section.stackchan-intro-fullscreen::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: url('assets/images/stack_chan_desk.jpg') center center / cover no-repeat;
+    }
+
+    .reveal .slides section.stackchan-intro-fullscreen::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.52) 0%, rgba(0, 0, 0, 0.18) 38%, rgba(0, 0, 0, 0.58) 100%);
+      pointer-events: none;
+    }
+
+    .reveal .slides section.stackchan-intro-fullscreen>h2 {
+      position: absolute;
+      top: 16px;
+      left: 20px;
+      z-index: 2;
+      margin: 0;
+      text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .stackchan-intro-overlay {
+      position: absolute;
+      top: 82px;
+      left: 20px;
+      z-index: 2;
+      width: min(92%, 980px);
+      box-sizing: border-box;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      background: rgba(0, 0, 0, 0.56);
+      backdrop-filter: blur(2px);
+    }
+
     .placeholder-box {
       min-height: 300px;
       margin-top: 12px;
@@ -130,6 +216,46 @@
       text-align: center;
       padding: 16px;
       box-sizing: border-box;
+    }
+
+    .wedding-media-layout {
+      margin-top: 12px;
+      height: 400px;
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.62fr) minmax(0, 0.88fr);
+      gap: 10px;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .wedding-media-layout .community-photo-overlay {
+      z-index: 3;
+      width: min(60%, 560px);
+      top: 12px;
+      left: 12px;
+    }
+
+    .wedding-media-frame {
+      margin: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      background: rgba(0, 0, 0, 0.34);
+      box-sizing: border-box;
+    }
+
+    .wedding-media-frame img,
+    .wedding-media-frame video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+      background: rgba(6, 10, 18, 0.9);
+    }
+
+    .wedding-media-frame video {
+      object-position: center;
     }
 
     .profile {
@@ -222,9 +348,9 @@
     }
 
     .ink-arch1 {
-      height: 310px;
-      mask-image: url('assets/images/arch1.png');
-      -webkit-mask-image: url('assets/images/arch1.png');
+      height: 420px;
+      mask-image: url('assets/images/how_stackchan_works_line.png');
+      -webkit-mask-image: url('assets/images/how_stackchan_works_line.png');
     }
 
     .modules-readable {
@@ -275,6 +401,80 @@
     .community-photo-bg.four-tiles {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       grid-template-rows: repeat(2, minmax(0, 1fr));
+    }
+
+    .community-photo-bg.makerfaire-tiles {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-rows: repeat(5, minmax(0, 1fr));
+      grid-template-areas:
+        "s s c"
+        "a a c"
+        "a a c"
+        "b b c"
+        "b b c";
+    }
+
+    .community-photo-bg.makerfaire-tiles .makerfaire-photo-a {
+      grid-area: a;
+    }
+
+    .community-photo-bg.makerfaire-tiles .makerfaire-photo-b {
+      grid-area: b;
+    }
+
+    .community-photo-bg.makerfaire-tiles .makerfaire-photo-c {
+      grid-area: c;
+    }
+
+    .community-photo-bg.mokumoku-tiles {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-rows: repeat(3, minmax(0, 1fr));
+      grid-template-areas:
+        "s s b"
+        "a a b"
+        "a a b";
+    }
+
+    .community-photo-bg.mokumoku-tiles .mokumoku-photo-a {
+      grid-area: a;
+    }
+
+    .community-photo-bg.mokumoku-tiles .mokumoku-photo-b {
+      grid-area: b;
+    }
+
+    .community-photo-bg.stackchan-fes-tiles {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-rows: repeat(3, minmax(0, 1fr));
+      grid-template-areas:
+        "s b b"
+        "a b b"
+        "a b b";
+    }
+
+    .community-photo-bg.stackchan-fes-tiles .stackchan-fes-photo-a {
+      grid-area: a;
+    }
+
+    .community-photo-bg.stackchan-fes-tiles .stackchan-fes-photo-b {
+      grid-area: b;
+    }
+
+    .community-photo-bg.edu-research-tiles {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: minmax(0, 0.44fr) repeat(2, minmax(0, 1fr));
+      grid-template-areas:
+        "s s"
+        "a b"
+        "a b";
+    }
+
+    .community-photo-bg.edu-research-tiles .edu-photo-a {
+      grid-area: a;
+    }
+
+    .community-photo-bg.edu-research-tiles .edu-photo-b {
+      grid-area: b;
     }
 
     .community-photo-bg.two-tiles {
@@ -389,8 +589,24 @@
       inset: 0;
       z-index: 0;
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 0.9fr) minmax(0, 2.2fr);
+      grid-template-rows: repeat(2, minmax(0, 1fr));
+      grid-template-areas:
+        "a a c"
+        "b b c";
       gap: 6px;
+    }
+
+    .birthday-photo-row .birthday-photo-a {
+      grid-area: a;
+    }
+
+    .birthday-photo-row .birthday-photo-b {
+      grid-area: b;
+    }
+
+    .birthday-photo-row .birthday-photo-c {
+      grid-area: c;
     }
 
     .birthday-photo-row::after {
@@ -407,6 +623,12 @@
       height: 100%;
       object-fit: cover;
       filter: saturate(1.08) contrast(1.03) brightness(0.96);
+    }
+
+    .birthday-photo-row img.birthday-photo-c {
+      object-fit: contain;
+      object-position: center bottom;
+      background: rgba(0, 0, 0, 0.36);
     }
 
     .birthday-illust-card {
@@ -592,6 +814,72 @@
       color: var(--accent);
     }
 
+    .self-involvement-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+      margin-bottom: 8px;
+    }
+
+    .self-involvement-grid-wrap {
+      position: relative;
+    }
+
+    .self-involvement-card {
+      --card-bg: none;
+      position: relative;
+      min-height: 116px;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      background: #0f131a var(--card-bg) center / cover no-repeat;
+      display: flex;
+      align-items: flex-end;
+      padding: 10px 12px;
+      box-sizing: border-box;
+    }
+
+    .self-involvement-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .self-involvement-card span {
+      position: relative;
+      z-index: 1;
+      color: #fff;
+      font-size: 0.58em;
+      font-weight: 700;
+      line-height: 1.28;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.52);
+    }
+
+    .self-involvement-card.is-active {
+      border-width: 3px;
+      border-color: rgba(255, 215, 94, 0.98);
+      box-shadow: 0 0 0 2px rgba(255, 215, 94, 0.55) inset, 0 0 20px rgba(255, 215, 94, 0.24);
+    }
+
+    .self-involvement-note-text {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: calc((100% - 20px) / 3);
+      height: 116px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 0.64em;
+      font-weight: 700;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+      letter-spacing: 0.02em;
+      pointer-events: none;
+    }
+
     .tag {
       display: inline-block;
       border: 1px solid var(--panel-border);
@@ -765,6 +1053,15 @@
         height: 100%;
       }
 
+      .reveal .slides section.community-vivid>ul {
+        width: min(92%, 92vw);
+        padding: 12px 16px 12px 28px;
+      }
+
+      .reveal .slides section.community-vivid>ul>li {
+        font-size: 0.82em;
+      }
+
       .difficult-cloud {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 8px;
@@ -817,13 +1114,42 @@
         padding: 8px;
       }
 
+      .community-photo-bg.stackchan-fes-tiles {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(2, minmax(0, 1fr));
+        grid-template-areas:
+          "a"
+          "b";
+        gap: 6px;
+      }
+
+      .community-photo-bg.edu-research-tiles {
+        grid-template-columns: 1fr;
+        grid-template-rows: minmax(0, 0.5fr) repeat(2, minmax(0, 1fr));
+        grid-template-areas:
+          "s"
+          "a"
+          "b";
+        gap: 6px;
+      }
+
       .community-photo-stage.kit-two-tiles {
         height: 500px;
+      }
+
+      .wedding-media-layout {
+        height: 460px;
+        grid-template-columns: 1fr;
+        grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
       }
 
       .birthday-photo-row {
         grid-template-columns: 1fr;
         grid-template-rows: repeat(3, minmax(0, 1fr));
+        grid-template-areas:
+          "a"
+          "b"
+          "c";
         gap: 4px;
       }
 
@@ -864,6 +1190,36 @@
       .kpi-grid.kpi-grid-4 {
         grid-template-columns: repeat(2, 1fr);
       }
+
+      .self-involvement-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .self-involvement-card {
+        min-height: 94px;
+        padding: 8px 10px;
+      }
+
+      .self-involvement-card span {
+        font-size: 0.52em;
+      }
+
+      .self-involvement-note-text {
+        width: calc((100% - 16px) / 3);
+        height: 94px;
+        font-size: 0.56em;
+      }
+
+      .stackchan-intro-overlay {
+        top: 66px;
+        width: calc(100% - 20px);
+        left: 10px;
+        right: 10px;
+        bottom: auto;
+        transform: none;
+        padding: 10px 11px;
+      }
     }
   </style>
 </head>
@@ -890,6 +1246,7 @@ Note:ｊｊ
       <div class="muted tiny">ｽﾀｯｸﾁｬﾝコミュニティ代表</div>
       <div class="muted tiny">秋葉原のロボットベンチャーでWebエンジニアをしている</div>
       <div class="muted tiny">TypeScriptが好き</div>
+      <div class="muted tiny">Twitter凍結→3年ぶりに復活</div>
     </div>
   </div>
 </div>
@@ -913,18 +1270,14 @@ Note:
 - 私が作っているｽﾀｯｸﾁｬﾝについて簡単に紹介し、開発のきっかけやコミュニティ運営の話をします。
 
 ---
+<!-- .slide: class="stackchan-intro-fullscreen" -->
 ## ｽﾀｯｸﾁｬﾝとは
-<div class="two-col">
-  <div>
-    <ul>
-      <li>ししかわが開発するオープンソースのロボット</li>
-      <li>「コミュニケーションロボットを、あなたの手に。」</li>
-    </ul>
-    <div class="tag">🖐手のひらサイズ</div><div class="tag">💬会話</div><div class="tag">😍super kawaii</div>
-  </div>
-  <div class="panel">
-    <img class="media" src="assets/images/stack_chan.jpg" alt="stack-chan">
-  </div>
+<div class="stackchan-intro-overlay">
+  <ul>
+    <li>ししかわが開発するオープンソースのロボット</li>
+    <li>「コミュニケーションロボットを、あなたの手に。」</li>
+  </ul>
+  <div class="tag">🖐手のひらサイズ</div><div class="tag">💬会話</div><div class="tag">😍super kawaii</div>
 </div>
 
 Note:
@@ -958,8 +1311,8 @@ Note:
 - 今日のデモはOpenAIのリアルタイムAPIを使用しました。
 - エッジ側では音声入出力に加えて、サーバーとの音声データの送受信処理を行っています。
 - ｽﾀｯｸﾁｬﾝがWi-Fi経由で直接OpenAIなどのサーバーと通信を行うことができます。
-- ファームウェアはすべてTypeScript製です。別の発表で詳しくご紹介しています。
-- ソフトウェアモジュールは入れ替え可能で、LLMのAPIを差替えたり、異なる
+- ファームウェアはすべてTypeScript製です。実装詳細は今回は省略します。
+- ソフトウェアモジュールは入れ替え可能で、LLMのAPIを差替えたり、異なる顔を表示できたりします。
 ---
 ## きっかけ: コミュニケーションロボットの死
 <ul>
@@ -1022,8 +1375,30 @@ Note:
 </div>
 
 Note:
-- ハードもソフトも Apache 2.0 で開いている点を強調する。
-- 「作れる/改造できる/売れる」の順で価値を伝える。
+- 1つめは「オープンな仕様」です。
+- 基板回路図や筐体の 3D モデル、ファームウェアなど、すべてのリソースを Apache 2.0 ライセンスで公開しています。
+- これにより、利用・改造・再配布・商用も可能となっています。
+---
+## 補足：キット化
+<div class="community-photo-stage kit-two-tiles">
+  <div class="community-photo-bg two-tiles">
+    <figure>
+      <img src="assets/images/takao.png" alt="タカオ版ｽﾀｯｸﾁｬﾝ">
+      <figcaption>タカオ版ｽﾀｯｸﾁｬﾝ</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/images/m5stack_stackchan.jpg" alt="M5Stack版ｽﾀｯｸﾁｬﾝ">
+      <figcaption>M5Stack版ｽﾀｯｸﾁｬﾝ</figcaption>
+    </figure>
+  </div>
+</div>
+<div class="muted tiny">M5Stack版画像の引用元: <a href="https://shop.m5stack.com/products/stackchan-kawaii-co-created-open-source-ai-desktop-robot" target="_blank" rel="noopener noreferrer">M5Stack公式ストア</a></div>
+
+Note:
+- 商用利用可能なので、ｽﾀｯｸﾁｬﾝをキット化する動きも出てきました。
+- 個人で3Dプリンタを使ってキットを売る人もいますし、
+- M5Stack社のKickstarterには世界各国から約4,100人がバッカーとして参加しました（2026年2月時点）。
+- この反応を受けて、公式ストアでのキット販売にもつながっています。
 ---
 ## オープンなプロセス
 <div>
@@ -1035,7 +1410,7 @@ Note:
     </ul>
   </div>
   <div>
-    <div class="muted tiny">X検索: 「ｽﾀｯｸﾁｬﾝ 難しい」(ホバーで拡大)</div>
+    <div class="muted tiny">X検索: 「ｽﾀｯｸﾁｬﾝ 難しい」</div>
     <div class="difficult-cloud">
       <img class="difficult1" src="assets/images/difficult1.png" alt="difficult tweet 1">
       <img class="difficult2" src="assets/images/difficult2.png" alt="difficult tweet 2">
@@ -1046,8 +1421,10 @@ Note:
 </div>
 
 Note:
-- 成功だけでなく失敗を公開している点を具体例で示す。
-- 「難しいと言える空気」が参加継続率を上げると説明する。
+- 次は「オープンなプロセス」です。
+- 設計データを公開するだけでは足りないので、制作中の過程も X や YouTube で公開しています。
+- このとき、うまくいった話だけでなく、失敗した話もそのまま出します。
+- そうすると初参加の人も「ここ難しいです」と言いやすくなって、結果的に離脱が減ります。
 ---
 ## オープンなマインド
 <ul>
@@ -1055,18 +1432,23 @@ Note:
   <li>ルールはシンプルに保つ
     <ul>
       <li>コミュニティ行動規範</li>
-      <li>商標＋二次創作ガイドライン</li>
+      <li><a href="https://www.j-platpat.inpit.go.jp/c1801/TR/JP-2023-073244/40/ja" target="_blank" rel="noopener noreferrer">商標</a>＋二次創作ガイドライン</li>
     </ul>
   </li>
 </ul>
 <div class="muted tiny">ルールを公開し、初参加でも迷わない入口を維持する。</div>
 
 Note:
-- ハードウェアや実装方式を限定しない姿勢を強調する。
-- 参加条件を下げるために、ルールを先に公開していると話す。
+- そして3つ目が「オープンなマインド」です。
+- ｽﾀｯｸﾁｬﾝを作ってみたい人は全員ウェルカムです。安心して開発を進められる環境を作っています。
+- コミュニティの行動規範を定めて、Twitter等で交流する際の指針としています。
+- 次にｽﾀｯｸﾁｬﾝの名前の利用についてです。
+- 例えば、私のリポジトリのデータを使わない作品でも「ｽﾀｯｸﾁｬﾝ」と呼んで構いません。
+- 特定の第三者がｽﾀｯｸﾁｬﾝの名前を独占しないために、商標を取得して、現在は私個人で管理をしています。
+- 二次創作ガイドラインを公開して、商標の使用ルールを定めています。
 ---
 <!-- .slide: class="stackchan-anything" -->
-## 補足：あれもこれもｽﾀｯｸﾁｬﾝ
+## 補足1/2：あれもこれもｽﾀｯｸﾁｬﾝ
 <div class="stackchan-anything-grid">
   <figure class="stackchan-anything-item stackchan-anything-item-a">
     <img src="assets/images/danball_stackchan.webp" alt="段ボールｽﾀｯｸﾁｬﾝ">
@@ -1084,12 +1466,37 @@ Note:
 <div class="muted small stackchan-anything-comment">特定製品というより、みんなで育てる「<strong>共有IP</strong>」として成立している。</div>
 
 Note:
-- 「オープンなマインド」を象徴する例として、様々なｽﾀｯｸﾁｬﾝの写真を見せる。
-- 「同じ規格を共有する文化」が中核で、形状や実装は固定しないと説明する。
-- 共有IPという言葉で、プロダクト観点の締めにする。
+- ｽﾀｯｸﾁｬﾝのオープンさを示す例を2つ補足します。
+- 例えばこの3枚みたいに、素材に段ボールを使っていても、M5Stack以外のマイコンボードを使っていてもｽﾀｯｸﾁｬﾝです。
+- 右の画像、なんだか人間っぽいですね。彼はヒューマノイドの「ｽﾀｯｸｻﾝ」で、ｽﾀｯｸﾁｬﾝファミリーの一人です。
+- 形をそろえるより、同じ文化と規格を共有することを大事にしています。
+- この辺りはOSS文化というより「くまモン」あるいは「初音ミク」のような二次創作文化に近いかもしれません。
+---
+## 補足2/2：グッズ
+<ul>
+  <li>製品の直接派生だけでなく、キャラクターを使ったグッズも増加</li>
+  <li>作るだけでなく、愛でる文化が継続参加を生む</li>
+</ul>
+<div class="community-photo-stage kit-two-tiles">
+  <div class="community-photo-bg two-tiles">
+    <figure>
+      <img src="assets/images/community/acril_stand.jpg" alt="アクスタ">
+      <figcaption>アクスタ（acryl_stand）</figcaption>
+    </figure>
+    <figure>
+      <img src="assets/images/community/t_shirt.jpg" alt="Tシャツ">
+      <figcaption>Tシャツ（t_shirt）</figcaption>
+    </figure>
+  </div>
+</div>
+<div class="muted tiny">画像の引用元: <a href="https://booth.pm/ja/items/5521829" target="_blank" rel="noopener noreferrer">アクスタ</a> / <a href="https://booth.pm/ja/items/4780001" target="_blank" rel="noopener noreferrer">Tシャツ</a></div>
+
+Note:
+- ｽﾀｯｸﾁｬﾝはハードウェア開発だけでなく、グッズや二次創作にも広がっています。
+- 同じ「作る」という切り口ですが、エンジニアでなくとも参加しやすい環境ができています。
 ---
 <!-- .slide: class="community-vivid" -->
-## プロダクトの広がり
+## 広がるコミュニティ
 <div class="variant-loop">
   <div class="variant-loop-track">
     <div class="variant-grid">
@@ -1144,26 +1551,26 @@ Note:
       <a class="variant-link" href="https://qiita.com/star_f/items/17d5fa7657c95d642fd8" target="_blank" rel="noopener noreferrer" title="ｽﾀｯｸﾁｬﾝ夏の学校">
         <img src="assets/images/community/stackchan_summer_school.jpeg" alt="ｽﾀｯｸﾁｬﾝ夏の学校">
       </a>
-      <a class="variant-link" href="https://speakerdeck.com/ciniml/rusty-stack-channosusume" target="_blank" rel="noopener noreferrer" title="Rusty Stack-chan">
-        <img src="assets/images/community/avatar.gif" alt="Rusty Stack-chan">
+      <a class="variant-link" href="https://x.com/robo8080/status/1451082478412648451" target="_blank" rel="noopener noreferrer" title="そこにいるだけで癒やされる">
+        <img src="assets/images/community/in_your_hands.jpg" alt="そこにいるだけで癒やされる">
       </a>
-      <a class="variant-link" href="https://dev.protopedia.net/prototype/5136" target="_blank" rel="noopener noreferrer" title="推しｽﾀｯｸﾁｬﾝ">
-        <img src="assets/images/community/oshi_stackchan_5136.png" alt="推しｽﾀｯｸﾁｬﾝ">
+      <a class="variant-link" href="https://x.com/Ou0i3/status/2022526750664925219" target="_blank" rel="noopener noreferrer" title="ﾍﾞﾋﾞｰｽﾀｯｸﾁｬﾝ">
+        <img src="assets/images/community/x-2022526750664925219-1.jpg" alt="ﾍﾞﾋﾞｰｽﾀｯｸﾁｬﾝ">
       </a>
-      <a class="variant-link" href="https://dev.protopedia.net/prototype/3072" target="_blank" rel="noopener noreferrer" title="ｵﾌﾞﾅｲｽﾞﾁｬﾝ">
-        <img src="assets/images/community/obniz_chan_3072.jpg" alt="ｵﾌﾞﾅｲｽﾞﾁｬﾝ">
+      <a class="variant-link" href="https://x.com/Sumi_Azuma/status/1784870024475234394" target="_blank" rel="noopener noreferrer" title="JP Tour Tokyo 2024">
+        <img src="assets/images/community/jp_tour_tokyo_2024.jpeg" alt="JP Tour Tokyo 2024">
       </a>
-      <a class="variant-link" href="https://dev.protopedia.net/prototype/3068" target="_blank" rel="noopener noreferrer" title="ﾏｲｸﾛﾋﾞｯﾄﾁｬﾝ">
-        <img src="assets/images/community/micro_bit_chan_3068.jpg" alt="ﾏｲｸﾛﾋﾞｯﾄﾁｬﾝ">
+      <a class="variant-link" href="https://booth.pm/ja/items/5521829" target="_blank" rel="noopener noreferrer" title="アクスタ">
+        <img src="assets/images/community/acril_stand.jpg" alt="アクスタ">
       </a>
-      <a class="variant-link" href="https://dev.protopedia.net/prototype/6352" target="_blank" rel="noopener noreferrer" title="ｳｯﾄﾞｽﾀｯｸﾁｬﾝ">
-        <img src="assets/images/community/wood_stackchan_6352.jpg" alt="ｳｯﾄﾞｽﾀｯｸﾁｬﾝ">
+      <a class="variant-link" href="https://booth.pm/ja/items/4780001" target="_blank" rel="noopener noreferrer" title="Tシャツ">
+        <img src="assets/images/community/t_shirt.jpg" alt="Tシャツ">
       </a>
-      <a class="variant-link" href="https://qiita.com/B-SKY-Lab/items/dd0fac56acc10b8f6887" target="_blank" rel="noopener noreferrer" title="ﾀｲﾘﾝﾁｬﾝ">
-        <img src="assets/images/community/tairinchan.webp" alt="ﾀｲﾘﾝﾁｬﾝ">
+      <a class="variant-link" href="https://x.com/sylacwa/status/2022597641855734054/" target="_blank" rel="noopener noreferrer" title="もくもく会（制作）">
+        <img src="assets/images/community/make.jpg" alt="もくもく会（制作）">
       </a>
-      <a class="variant-link" href="https://dev.protopedia.net/prototype/4842" target="_blank" rel="noopener noreferrer" title="ｽﾀｯｸﾁｬﾝの兄">
-        <img src="assets/images/community/stackchan_no_ani_4842.jpg" alt="ｽﾀｯｸﾁｬﾝの兄">
+      <a class="variant-link" href="https://x.com/sylacwa/status/2022597641855734054/" target="_blank" rel="noopener noreferrer" title="もくもく会（作品）">
+        <img src="assets/images/community/gundam.jpg" alt="もくもく会（作品）">
       </a>
     </div>
     <div class="variant-grid" aria-hidden="true">
@@ -1218,100 +1625,47 @@ Note:
       <a class="variant-link" href="https://qiita.com/star_f/items/17d5fa7657c95d642fd8" target="_blank" rel="noopener noreferrer" title="ｽﾀｯｸﾁｬﾝ夏の学校">
         <img src="assets/images/community/stackchan_summer_school.jpeg" alt="ｽﾀｯｸﾁｬﾝ夏の学校">
       </a>
-      <a class="variant-link" href="https://speakerdeck.com/ciniml/rusty-stack-channosusume" target="_blank" rel="noopener noreferrer" title="Rusty Stack-chan">
-        <img src="assets/images/community/avatar.gif" alt="Rusty Stack-chan">
+      <a class="variant-link" href="https://x.com/robo8080/status/1451082478412648451" target="_blank" rel="noopener noreferrer" title="そこにいるだけで癒やされる">
+        <img src="assets/images/community/in_your_hands.jpg" alt="そこにいるだけで癒やされる">
       </a>
-      <a class="variant-link" href="https://dev.protopedia.net/prototype/5136" target="_blank" rel="noopener noreferrer" title="推しｽﾀｯｸﾁｬﾝ">
-        <img src="assets/images/community/oshi_stackchan_5136.png" alt="推しｽﾀｯｸﾁｬﾝ">
+      <a class="variant-link" href="https://x.com/Ou0i3/status/2022526750664925219" target="_blank" rel="noopener noreferrer" title="ﾍﾞﾋﾞｰｽﾀｯｸﾁｬﾝ">
+        <img src="assets/images/community/x-2022526750664925219-1.jpg" alt="ﾍﾞﾋﾞｰｽﾀｯｸﾁｬﾝ">
       </a>
-      <a class="variant-link" href="https://dev.protopedia.net/prototype/3072" target="_blank" rel="noopener noreferrer" title="ｵﾌﾞﾅｲｽﾞﾁｬﾝ">
-        <img src="assets/images/community/obniz_chan_3072.jpg" alt="ｵﾌﾞﾅｲｽﾞﾁｬﾝ">
+      <a class="variant-link" href="https://x.com/Sumi_Azuma/status/1784870024475234394" target="_blank" rel="noopener noreferrer" title="JP Tour Tokyo 2024">
+        <img src="assets/images/community/jp_tour_tokyo_2024.jpeg" alt="JP Tour Tokyo 2024">
       </a>
-      <a class="variant-link" href="https://dev.protopedia.net/prototype/3068" target="_blank" rel="noopener noreferrer" title="ﾏｲｸﾛﾋﾞｯﾄﾁｬﾝ">
-        <img src="assets/images/community/micro_bit_chan_3068.jpg" alt="ﾏｲｸﾛﾋﾞｯﾄﾁｬﾝ">
+      <a class="variant-link" href="https://booth.pm/ja/items/5521829" target="_blank" rel="noopener noreferrer" title="アクスタ">
+        <img src="assets/images/community/acril_stand.jpg" alt="アクスタ">
       </a>
-      <a class="variant-link" href="https://dev.protopedia.net/prototype/6352" target="_blank" rel="noopener noreferrer" title="ｳｯﾄﾞｽﾀｯｸﾁｬﾝ">
-        <img src="assets/images/community/wood_stackchan_6352.jpg" alt="ｳｯﾄﾞｽﾀｯｸﾁｬﾝ">
+      <a class="variant-link" href="https://booth.pm/ja/items/4780001" target="_blank" rel="noopener noreferrer" title="Tシャツ">
+        <img src="assets/images/community/t_shirt.jpg" alt="Tシャツ">
       </a>
-      <a class="variant-link" href="https://qiita.com/B-SKY-Lab/items/dd0fac56acc10b8f6887" target="_blank" rel="noopener noreferrer" title="ﾀｲﾘﾝﾁｬﾝ">
-        <img src="assets/images/community/tairinchan.webp" alt="ﾀｲﾘﾝﾁｬﾝ">
+      <a class="variant-link" href="https://x.com/sylacwa/status/2022597641855734054/" target="_blank" rel="noopener noreferrer" title="もくもく会（制作）">
+        <img src="assets/images/community/make.jpg" alt="もくもく会（制作）">
       </a>
-      <a class="variant-link" href="https://dev.protopedia.net/prototype/4842" target="_blank" rel="noopener noreferrer" title="ｽﾀｯｸﾁｬﾝの兄">
-        <img src="assets/images/community/stackchan_no_ani_4842.jpg" alt="ｽﾀｯｸﾁｬﾝの兄">
+      <a class="variant-link" href="https://x.com/sylacwa/status/2022597641855734054/" target="_blank" rel="noopener noreferrer" title="もくもく会（作品）">
+        <img src="assets/images/community/gundam.jpg" alt="もくもく会（作品）">
       </a>
     </div>
   </div>
 </div>
 
-Note:
-- ここは「プロダクト側の広がり」を絵で見せるスライド。
-- 派生作品とキット化が増え、製品の直接派生だけでなくキャラクターグッズにも展開していると補足する。
----
-## 様々な派生作品
 <ul>
-  <li>開発環境が複線化し、参加の入口が増えた</li>
-  <li>Arduino / Moddable / MicroPython / Rust / UIFlow</li>
-  <li>同じキャラクターと仕様を土台に、実装が共存する</li>
+  <li>オープンな文化に共感して人が集まり、コミュニティになった</li>
+  <li>ここからはｽﾀｯｸﾁｬﾝの活動の広がりを見ていきます</li>
 </ul>
-<div class="muted small">特定実装に閉じず、複数スタックで進化し続ける。</div>
 
 Note:
-- 実装が1つに固定されないことを「派生しやすさ」の証拠として示す。
-- ここでは詳細実装に深入りせず、入口の多さを伝える。
----
-## 様々なキット
-<div class="community-photo-stage kit-two-tiles">
-  <div class="community-photo-bg two-tiles">
-    <figure>
-      <img src="assets/images/takao.png" alt="タカオ版ｽﾀｯｸﾁｬﾝ">
-      <figcaption>タカオ版ｽﾀｯｸﾁｬﾝ</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/images/m5stack_stackchan.jpg" alt="M5Stack版ｽﾀｯｸﾁｬﾝ">
-      <figcaption>M5Stack版ｽﾀｯｸﾁｬﾝ</figcaption>
-    </figure>
-  </div>
-</div>
-<div class="muted tiny">M5Stack版画像の引用元: <a href="https://shop.m5stack.com/products/stackchan-kawaii-co-created-open-source-ai-desktop-robot" target="_blank" rel="noopener noreferrer">M5Stack公式ストア</a></div>
-
-Note:
-- キット名はテンポよく読み上げ、画像で多様性を見せる。
-- 「公式単一モデルではない」ことをここで強調する。
----
-## 様々なグッズ
-<ul>
-  <li>製品の直接派生だけでなく、キャラクターを使ったグッズも増加</li>
-  <li>作るだけでなく、愛でる文化が継続参加を生む</li>
-</ul>
-<div class="placeholder-box">
-  <div>
-    <div>グッズ画像は後で挿入予定</div>
-    <div class="muted tiny">TODO: 物販・ノベルティ・日用品系の写真を配置</div>
-  </div>
-</div>
-
-Note:
-- ここは将来差し替え用のプレースホルダー。
-- 「ハードウェア開発」だけでない裾野の広さを示す。
----
-## イベントの広がり
-<ul>
-  <li>公開された仕様とマインドが、活動の場を増やした</li>
-  <li>Maker Faire / もくもく会 / ｽﾀｯｸﾁｬﾝフェス / お誕生日会</li>
-  <li>学術・教育分野、結婚式など生活の場にも波及</li>
-</ul>
-<div class="muted small">ここからはイベントを1項目ずつ見ていく。</div>
-
-Note:
-- このスライドはイベント群の見出しとして使う。
-- 各イベントを「誰が主催しても回る」視点で接続する。
+- 以上のようにオープンを追求した結果として、M5Stack版Kickstarterでも世界各国から約4,100人が参加するなど、コミュニティは国境を越えて広がっています（2026年2月時点）。
+- ここからは作品そのものではなく、活動の「場」がどう増えたかを見ていきます。
+- Maker Faire、もくもく会、フェス、お誕生日会、教育や生活の場まで広がってきました。
+- 作った人が見せて、見た人が次に作るという、コミュニティ拡大の好循環が回り始めています。
 ---
 <div class="community-photo-stage">
-  <div class="community-photo-bg four-tiles">
-    <img src="assets/images/mftokyo_22.jpg" alt="maker faire tokyo 2022">
-    <img src="assets/images/mftokyo_23.jpg" alt="maker faire tokyo 2023">
-    <img src="assets/images/mfshenzhen1.jpg" alt="maker faire shenzhen 1">
-    <img src="assets/images/mfshenzhen2.jpg" alt="maker faire shenzhen 2">
+  <div class="community-photo-bg makerfaire-tiles">
+    <img class="makerfaire-photo-a" src="assets/images/mftokyo_23.jpg" alt="maker faire tokyo 2023">
+    <img class="makerfaire-photo-b" src="assets/images/community/mf_bayarea.png" alt="maker faire bay area">
+    <img class="makerfaire-photo-c" src="assets/images/community/stacksan_shenzen.jpg" alt="stacksan shenzhen">
   </div>
   <div class="community-photo-overlay">
     <h3>Maker Faire 出展</h3>
@@ -1323,80 +1677,78 @@ Note:
 </div>
 
 Note:
-- 地名は全部読み上げず「国内外で常連化」を主語にする。
-- 海外出展が特別イベントではなく継続活動になったと補足する。
+- ものつくり愛好家の祭典であるMaker Faire では、東京から始まって海外にも出るようになりました。
+- 海外出展が単発の遠征で終わらず、継続した活動になっているのがポイントです。
 ---
 <div class="community-photo-stage">
-  <div class="community-photo-bg four-tiles">
-    <img src="assets/images/stackchan_mokumoku_20260214.jpeg" alt="stack-chan mokumoku 2026-02-14">
-    <img src="assets/images/community/make.jpg" alt="mokumoku making">
-    <img src="assets/images/community/gundam.jpg" alt="mokumoku作品例">
-    <img src="assets/images/community/stack_chan_desk.jpg" alt="mokumoku会場の様子">
+  <div class="community-photo-bg mokumoku-tiles">
+    <img class="mokumoku-photo-a" src="assets/images/stackchan_mokumoku_20260214.jpeg" alt="stack-chan mokumoku 2026-02-14">
+    <img class="mokumoku-photo-b" src="assets/images/community/gmk.jpeg" alt="gmk">
   </div>
   <div class="community-photo-overlay">
     <h3>もくもく会</h3>
     <ul>
       <li>手を動かしながら学べる、コミュニティの定例接点</li>
       <li>初参加でも相談しやすく、開発者とユーザが混ざる場</li>
+      <li>🍻もある</li>
     </ul>
   </div>
 </div>
 
 Note:
-- 「学習会」よりも「自発開催の接点」である点を強調する。
-- 開発者とユーザの分断を防ぐ場だと説明する。
+- 有志のメンバーによって定期的にもくもく会が開催されています。
+- 初参加でも経験者のレクチャーを受けながら入門ができます。
+- 最後にはお酒とソフトドリンクも入るのが恒例です。
 ---
-## ｽﾀｯｸﾁｬﾝフェス
-<ul>
-  <li>参加サークルが作品展示・交流を行うコミュニティイベント</li>
-  <li>公式1人主導ではなく、複数主催で継続</li>
-</ul>
-<div class="placeholder-box">
-  <div>
-    <div>ｽﾀｯｸﾁｬﾝフェスの画像は後で挿入予定</div>
-    <div class="muted tiny">TODO: ブース写真・展示全景・参加サークル写真を配置</div>
+<div class="community-photo-stage">
+  <div class="community-photo-bg stackchan-fes-tiles">
+    <img class="stackchan-fes-photo-a" src="assets/images/community/stackchan_fes1.jpeg" alt="スタックチャンフェス会場">
+    <img class="stackchan-fes-photo-b" src="assets/images/community/stackchan_fes2.jpeg" alt="スタックチャンフェス展示">
+  </div>
+  <div class="community-photo-overlay">
+    <h3>ｽﾀｯｸﾁｬﾝフェス</h3>
+    <ul>
+      <li>ｽﾀｯｸﾁｬﾝオンリーイベント</li>
+      <li>展示＆販売</li>
+    </ul>
   </div>
 </div>
+<div class="muted tiny">画像の引用元: <a href="https://x.com/anoken2017/status/1908406547169886623" target="_blank" rel="noopener noreferrer">スタックチャンフェス1</a> / <a href="https://x.com/anoken2017/status/1908399077110538584/photo/1" target="_blank" rel="noopener noreferrer">スタックチャンフェス2</a></div>
 
 Note:
-- ここは「場の設計が分散運営されている」証拠として使う。
-- 規模ではなく、運営の再現性にフォーカスする。
+- ｽﾀｯｸﾁｬﾝフェスは、参加サークルが作品を持ち寄って交流するイベントです。
+- 作品の展示だけでなくグッズの販売も行われていて、コミュニティの交流の場になっています。
 ---
 <div class="community-photo-stage birthday-photo-stage">
   <div class="birthday-photo-row">
-    <img src="assets/images/birthday_1st.jpg" alt="stack-chan birthday first">
-    <img src="assets/images/birthday_2nd_pinata.png" alt="stack-chan birthday second pinata">
-    <img src="assets/images/birthday_2nd.jpg" alt="stack-chan birthday second group photo">
+    <img class="birthday-photo-a" src="assets/images/birthday_1st.jpg" alt="stack-chan birthday first">
+    <img class="birthday-photo-b" src="assets/images/birthday_2nd.jpg" alt="stack-chan birthday second group photo">
+    <img class="birthday-photo-c" src="assets/images/birthday_2nd_pinata.png" alt="stack-chan birthday second pinata">
   </div>
   <div class="community-photo-overlay">
     <h3>お誕生日会</h3>
     <ul>
       <li>ｽﾀｯｸﾁｬﾝの誕生日は7月2日</li>
-      <li>毎年開催するオンリーイベントとして定着</li>
+      <li>毎年開催する開発周年イベントとして定着</li>
       <li>LT・ビデオメッセージ・交流会でお祝い文化を形成</li>
     </ul>
   </div>
-  <figure class="birthday-illust-card">
-    <img src="assets/images/birthday_2nd_illust.png" alt="2ndお祝いイラスト">
-    <figcaption>2nd お祝いイラスト</figcaption>
-  </figure>
 </div>
 
 Note:
-- 参加障壁が低いお祝いイベントが、継続参加の入口になっていると説明する。
-- ここは後の自走コミュニティのハイライト例にもつながる。
+- お誕生日会は毎年7月2日に開催していて、LTやビデオメッセージで気軽に参加できます。
+- 技術発表だけでなく、お祝い文化があることで新しく入る人が増えます。
+- この話は後半の「ししかわ関与ハイライト」にもつながります。
 ---
 <div class="community-photo-stage">
-  <div class="community-photo-bg four-tiles">
-    <img src="assets/images/community/stackchan_summer_school.jpeg" alt="stack-chan summer school">
-    <img src="assets/images/community/wood_stackchan_6352.jpg" alt="stack-chan in research context">
-    <img src="assets/images/community/ai_stackchan_minimal_5384.jpg" alt="ai stack-chan minimal">
-    <img src="assets/images/modules_contributed.drawio.png" alt="technical ecosystem references">
+  <div class="community-photo-bg edu-research-tiles">
+    <img class="edu-photo-a" src="assets/images/community/stackchan_summer_school.jpeg" alt="高校生向けワークショップ">
+    <img class="edu-photo-b" src="assets/images/community/wood_stackchan_6352.jpg" alt="研究（ウッドスタックチャン）">
   </div>
   <div class="community-photo-overlay">
     <h3>学術・教育分野</h3>
     <ul>
-      <li>高校生向けハンズオン: ｽﾀｯｸﾁｬﾝ夏の学校</li>
+      <li>高校生向けワークショップ: ｽﾀｯｸﾁｬﾝ夏の学校</li>
       <li>学術論文:
         <ul>
           <li>非人型ロボットの印象変化における顔の有無と動作の影響 [中田 2025]</li>
@@ -1408,63 +1760,98 @@ Note:
 </div>
 
 Note:
-- 教育と研究の両面で使われている点を1枚で示す。
-- 「趣味の枠を越えた」ことを短く強調する。
+- 趣味の枠を越えて、学術教育の場にも進出しています。
+- 高校生向けワークショップの題材になったり、ｽﾀｯｸﾁｬﾝ自身を研究対象として論文を書いたメンバーもいます。
+- キットなら同じ土台を使えるので、教育や研究で利用しやすいです。
 ---
-## 結婚式
-<ul>
-  <li>イベント会場だけでなく、個人のライフイベントにも進出</li>
-  <li>「生活に浸透したコミュニティ」の象徴的な事例</li>
-</ul>
-<div class="placeholder-box">
-  <div>
-    <div>結婚式の画像は後で挿入予定</div>
-    <div class="muted tiny">TODO: 本人許諾済みの写真のみを配置</div>
-  </div>
-</div>
-
-Note:
-- ここは生活浸透の象徴として短く扱う。
-- 写真差し替え時に権利確認が必要な点をメモとして残す。
----
-## 自走するコミュニティ
-<div class="two-col">
-  <div>
+<div class="wedding-media-layout">
+  <figure class="wedding-media-frame">
+    <img src="assets/images/community/stackchan_ring_boy.webp" alt="stackchan ring boy">
+  </figure>
+  <figure class="wedding-media-frame">
+    <video autoplay muted loop playsinline preload="metadata" aria-label="NDenchi stackchan wedding video">
+      <source src="assets/NDenchi_stackchan.mp4" type="video/mp4">
+    </video>
+  </figure>
+  <div class="community-photo-overlay">
+    <h3>結婚式</h3>
     <ul>
-      <li>前記の広がりを支えたのは「3つのオープン」</li>
-      <li>メンバーの自発的な活動を邪魔しない</li>
-      <li>ししかわが前に出すぎない</li>
-      <li>運営は方針を定めたら、トラブル対応と仕組みのメンテナンスに徹する</li>
+      <li>イベント会場だけでなく、個人のライフイベントにも進出</li>
+      <li>「生活に浸透したコミュニティ」の象徴的な事例</li>
     </ul>
-    <div class="muted small">結果: コミュニティが自走し、運営者がボトルネックにならない。</div>
   </div>
-  <div class="panel">
-    <div class="kpi-section-title" style="margin-top: 0;">ししかわ関与ハイライト（例）</div>
-    <ul class="small">
-      <li>キット化（複数）</li>
-      <li>Maker Faire 出展</li>
-      <li>もくもく会</li>
-      <li>ｽﾀｯｸﾁｬﾝフェス</li>
-      <li><span style="background: rgba(255, 215, 94, 0.18); border: 1px solid rgba(255, 215, 94, 0.7); border-radius: 6px; padding: 1px 6px;">お誕生日会</span></li>
-    </ul>
-    <div class="muted tiny">「お誕生日会」以外はハイライトなし。活動はメンバー主導で回る。</div>
+</div>
+<div class="muted tiny">画像・動画の引用元: <a href="https://note.com/denchi813/n/n86deaa2d5edf" target="_blank" rel="noopener noreferrer">ｽﾀｯｸﾁｬﾝ大役を果たす</a> / <a href="https://x.com/Rw7DVtscPX/status/1912873140340084977" target="_blank" rel="noopener noreferrer">NDenchi_stackchan</a></div>
+
+Note:
+- 会場イベントだけでなく、結婚式のような個人のライフイベントにも入り始めました。
+- コミュニティが文化として生活に浸透してきた象徴だと思っています。
+---
+## やがて自走するコミュニティ 1
+<div>
+  <div class="kpi-section-title" style="margin-top: 0;">ししかわが関与したイベントは？</div>
+  <div class="self-involvement-grid-wrap">
+    <div class="self-involvement-grid">
+      <div class="self-involvement-card" style="--card-bg: url('assets/images/m5stack_stackchan.jpg');">
+        <span>キット化</span>
+      </div>
+      <div class="self-involvement-card" style="--card-bg: url('assets/images/community/mf_bayarea.png');">
+        <span>Maker Faire 出展</span>
+      </div>
+      <div class="self-involvement-card" style="--card-bg: url('assets/images/stackchan_mokumoku_20260214.jpeg');">
+        <span>もくもく会</span>
+      </div>
+      <div class="self-involvement-card" style="--card-bg: url('assets/images/community/stackchan_fes1.jpeg');">
+        <span>ｽﾀｯｸﾁｬﾝフェス</span>
+      </div>
+      <div class="self-involvement-card" style="--card-bg: url('assets/images/community/stackchan_ring_boy.webp');">
+        <span>結婚式</span>
+      </div>
+      <div class="self-involvement-card" style="--card-bg: url('assets/images/community/stackchan_summer_school.jpeg');">
+        <span>高校生ワークショップ</span>
+      </div>
+      <div class="self-involvement-card" style="--card-bg: url('assets/images/community/wood_stackchan_6352.jpg');">
+        <span>研究</span>
+      </div>
+      <div class="self-involvement-card is-active" style="--card-bg: url('assets/images/birthday_2nd.jpg');">
+        <span>お誕生日会</span>
+      </div>
+    </div>
+    <div class="self-involvement-note-text">←これだけ</div>
   </div>
 </div>
 
 Note:
-- 自走の定義を「主催者依存を外した状態」として明確に言う。
-- 右側のハイライト例で、「お誕生日会」以外にハイライトがないこと自体を成果として示す。
+- さて、様々な活動を紹介してきました。
+- ところで、これらの活動のうち、現在私が関与しているものはどれくらいあるでしょうか？
+- 実は、いま私が主に関与しているのはお誕生日会だけです。
+- それ以外の活動は、メンバー主導で回り続けています。
+---
+## やがて自走するコミュニティ 2
+<ul>
+  <li>前記の広がりを支えたのは「3つのオープン」</li>
+  <li>メンバーの自発的な活動を邪魔しない</li>
+  <li>前に出すぎない。お気持ち表明をしない</li>
+  <li>トラブル対応と仕組みのメンテナンスに徹する</li>
+</ul>
+<div class="muted small">結果: コミュニティが自走し、運営者がボトルネックにならない。</div>
+
+Note:
+- 私が考える自走は、私が風邪で寝ても活動が止まらない状態です。
+- 運営は前に出続けるより、方針づくりとトラブル対応に徹します。
+- この考え方は Web プロダクトのコミュニティ運営にもそのまま使えます。
 ---
 ## まとめ
 <ul>
   <li>課題: クローズドなロボットの死を回避したい</li>
   <li>解決策: 全てをオープンにして、誰もが開発・保守できるようにしてみた</li>
-  <li>鍵: 機能だけでなく、コミュニティ設計</li>
+  <li>寛容な姿勢で自発的な活動を促し、運営のボトルネックを解消する</li>
 </ul>
 
 Note:
-- 冒頭の課題と解決を1対1で回収する。
-- 最後に持ち帰りを1文で再提示する。
+- 最初の課題は、ベンダー依存でロボットが止まってしまうことでした。
+- そこで3つのオープンを徹底して、誰でも作れて保守できる形にしました。
+- 今日の持ち帰りは、機能だけでなくコミュニティ設計がプロダクト寿命を伸ばす、です。
 ---
 ## コミュニティに参加しよう！
 <div class="qr-box">
@@ -1480,8 +1867,21 @@ Note:
 <div class="center" style="margin-top: 12px;">あなたの「作ってみた」を待っています！</div>
 
 Note:
-- QR案内は10秒で切り上げ、参加アクションを1つだけお願いする。
-- 「今日から作って共有」で締める。
+- 興味が湧いた方は、まず Discord か GitHub のどちらか1つだけ見てみてください。
+- もし作ったら、ぜひ「作ってみた」を1件投稿してください。
+- その1件が次の参加者の入口になります。
+
+---
+## Appendix（配布資料向け）: ソフトウェアの派生
+<ul>
+  <li>Arduino / Moddable / MicroPython / Rust / Python (ROS 2) / UIFlow</li>
+  <li>同じキャラクター、多様な実装</li>
+</ul>
+
+Note:
+- 実装は1本化していません。
+- Arduino、Moddable、MicroPython、Rust、ビジュアルプログラミング言語 のように入口が複数あります。
+- ｽﾀｯｸﾁｬﾝの造形はシンプルで移植がしやすく、自分の得意な環境から参加できるのが強みです。
         </script>
       </section>
     </div>
