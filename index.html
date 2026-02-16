@@ -890,6 +890,33 @@
       color: var(--accent);
     }
 
+    .reveal .slides section.open-mind-slide {
+      position: relative;
+      padding-bottom: 220px !important;
+      box-sizing: border-box;
+    }
+
+    .open-mind-trademark {
+      position: absolute;
+      left: 50%;
+      bottom: 12px;
+      transform: translateX(-50%);
+      width: min(94%, 1080px);
+      margin: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .open-mind-trademark img {
+      width: 100%;
+      max-height: 190px;
+      object-fit: contain;
+      display: block;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(0, 0, 0, 0.28);
+    }
+
     .center {
       text-align: center;
     }
@@ -909,71 +936,60 @@
     }
 
     .difficult-cloud {
-      display: grid;
-      grid-template-columns: repeat(12, minmax(0, 1fr));
-      gap: 8px 10px;
-      align-items: start;
-      margin-top: 4px;
-      padding: 6px 8px 72px;
+      position: relative;
+      height: 360px;
+      margin-top: 8px;
       overflow: visible;
       isolation: isolate;
     }
 
     .difficult-cloud img {
-      width: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: min(38%, 360px);
       border-radius: 10px;
       border: 1px solid rgba(255, 255, 255, 0.25);
-      box-shadow: 0 10px 18px rgba(0, 0, 0, 0.34);
+      box-shadow: 0 12px 22px rgba(0, 0, 0, 0.38);
       background: #1a1a1a;
-      position: relative;
       z-index: 1;
-      cursor: zoom-in;
-      transform: rotate(var(--rot, 0deg)) scale(1);
+      cursor: pointer;
+      transform: translate(calc(-50% + var(--base-x, 0px)), calc(-50% + var(--base-y, 0px))) rotate(var(--rot, 0deg)) scale(1);
       transform-origin: center;
       will-change: transform;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
     }
 
-    .difficult-cloud img:hover {
+    .difficult-cloud img:focus-visible,
+    .difficult-cloud img.is-active {
       z-index: 20;
-      border-color: rgba(255, 215, 94, 0.9);
-      box-shadow: 0 18px 34px rgba(0, 0, 0, 0.55);
-      transform: translate(var(--hover-x, 0px), var(--hover-y, 0px)) rotate(0deg) scale(2.1);
+      border-color: rgba(255, 215, 94, 0.95);
+      box-shadow: 0 22px 42px rgba(0, 0, 0, 0.56);
+      transform: translate(-50%, -50%) rotate(0deg) scale(1.38);
     }
 
     .difficult1 {
-      grid-column: 1 / 5;
-      --rot: -2.4deg;
-      --hover-x: 100px;
-      --hover-y: 24px;
-      transform-origin: left top;
+      --rot: -5deg;
+      --base-x: -210px;
+      --base-y: -96px;
     }
 
     .difficult2 {
-      grid-column: 9 / 13;
-      margin-top: 6px;
-      --rot: 1.8deg;
-      --hover-x: -100px;
-      --hover-y: 20px;
-      transform-origin: right top;
+      --rot: 4deg;
+      --base-x: 212px;
+      --base-y: -88px;
     }
 
     .difficult3 {
-      grid-column: 3 / 7;
-      margin-top: -24px;
-      --rot: -1.3deg;
-      --hover-x: 72px;
-      --hover-y: 0px;
-      transform-origin: left center;
+      --rot: -3.8deg;
+      --base-x: -154px;
+      --base-y: 94px;
     }
 
     .difficult4 {
-      grid-column: 7 / 11;
-      margin-top: -30px;
-      --rot: 2.4deg;
-      --hover-x: -70px;
-      --hover-y: -4px;
-      transform-origin: right center;
+      --rot: 4.5deg;
+      --base-x: 162px;
+      --base-y: 96px;
     }
 
     .reveal .slides section.stackchan-anything {
@@ -1063,21 +1079,34 @@
       }
 
       .difficult-cloud {
+        position: static;
+        height: auto;
+        display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 8px;
         padding: 6px 0 12px;
       }
 
-      .difficult-cloud img {
-        grid-column: auto !important;
-        margin-top: 0 !important;
-        --hover-x: 0px !important;
-        --hover-y: 0px !important;
-        transform-origin: center;
+      .reveal .slides section.open-mind-slide {
+        padding-bottom: 156px !important;
       }
 
-      .difficult-cloud img:hover {
-        transform: rotate(0deg) scale(1.45);
+      .open-mind-trademark {
+        width: min(98%, 96vw);
+        bottom: 8px;
+      }
+
+      .open-mind-trademark img {
+        max-height: 126px;
+      }
+
+      .difficult-cloud img {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+        transform: rotate(0deg) scale(1);
+        transform-origin: center;
       }
 
       .stackchan-anything-grid {
@@ -1426,6 +1455,7 @@ Note:
 - このとき、うまくいった話だけでなく、失敗した話もそのまま出します。
 - そうすると初参加の人も「ここ難しいです」と言いやすくなって、結果的に離脱が減ります。
 ---
+<!-- .slide: class="open-mind-slide" -->
 ## オープンなマインド
 <ul>
   <li>誰でもウェルカムで、安心して参加できる環境を作る</li>
@@ -1437,6 +1467,9 @@ Note:
   </li>
 </ul>
 <div class="muted tiny">ルールを公開し、初参加でも迷わない入口を維持する。</div>
+<div class="open-mind-trademark">
+  <img src="assets/images/shouhyou.png" alt="ｽﾀｯｸﾁｬﾝ商標登録情報">
+</div>
 
 Note:
 - そして3つ目が「オープンなマインド」です。
@@ -1475,7 +1508,7 @@ Note:
 ## 補足2/2：グッズ
 <ul>
   <li>製品の直接派生だけでなく、キャラクターを使ったグッズも増加</li>
-  <li>作るだけでなく、愛でる文化が継続参加を生む</li>
+  <li>エンジニアでなくても「作る文化」に参加できる</li>
 </ul>
 <div class="community-photo-stage kit-two-tiles">
   <div class="community-photo-bg two-tiles">
@@ -1651,15 +1684,15 @@ Note:
 </div>
 
 <ul>
-  <li>オープンな文化に共感して人が集まり、コミュニティになった</li>
+  <li>オープンな文化に共感して人が集まる</li>
+  <li>作った人が見せる⇄見た人が作る</li>
   <li>ここからはｽﾀｯｸﾁｬﾝの活動の広がりを見ていきます</li>
 </ul>
 
 Note:
-- 以上のようにオープンを追求した結果として、M5Stack版Kickstarterでも世界各国から約4,100人が参加するなど、コミュニティは国境を越えて広がっています（2026年2月時点）。
+- ｽﾀｯｸﾁｬﾝのオープンな文化に共感した人たちが自分のｽﾀｯｸﾁｬﾝを作り始めて、コミュニティができました。
+- そして作った人が見せて、見た人が次に作るという、コミュニティ拡大の好循環が回り始めています。
 - ここからは作品そのものではなく、活動の「場」がどう増えたかを見ていきます。
-- Maker Faire、もくもく会、フェス、お誕生日会、教育や生活の場まで広がってきました。
-- 作った人が見せて、見た人が次に作るという、コミュニティ拡大の好循環が回り始めています。
 ---
 <div class="community-photo-stage">
   <div class="community-photo-bg makerfaire-tiles">
@@ -1677,8 +1710,10 @@ Note:
 </div>
 
 Note:
-- ものつくり愛好家の祭典であるMaker Faire では、東京から始まって海外にも出るようになりました。
-- 海外出展が単発の遠征で終わらず、継続した活動になっているのがポイントです。
+- ものつくり愛好家の祭典であるMaker Faireに継続して出展や参加をしています。
+- 東京でのブース展示から始まって近年は海外のMaker Faireにも進出するようになりました。
+- 左下はベイエリア、右の画像は深センでの展示の様子です。
+- ｽﾀｯｸｻﾝも中国語を喋っていますね。
 ---
 <div class="community-photo-stage">
   <div class="community-photo-bg mokumoku-tiles">
@@ -1851,7 +1886,8 @@ Note:
 Note:
 - 最初の課題は、ベンダー依存でロボットが止まってしまうことでした。
 - そこで3つのオープンを徹底して、誰でも作れて保守できる形にしました。
-- 今日の持ち帰りは、機能だけでなくコミュニティ設計がプロダクト寿命を伸ばす、です。
+- その結果、メンバーの自発的な活動を促し、運営のボトルネックを解消することができました。
+- このあとｽﾀｯｸﾁｬﾝを展示しますので、ぜひ話しかけてみてください。
 ---
 ## コミュニティに参加しよう！
 <div class="qr-box">
@@ -1901,6 +1937,55 @@ Note:
       plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
       showNotes: false
     });
+
+    const setupDifficultCloudToggle = () => {
+      document.querySelectorAll('.difficult-cloud').forEach((difficultCloud) => {
+        if (difficultCloud.dataset.toggleBound === 'true') {
+          return;
+        }
+
+        const difficultImages = Array.from(difficultCloud.querySelectorAll('img'));
+        const clearActiveImages = () => {
+          difficultImages.forEach((img) => {
+            img.classList.remove('is-active');
+          });
+        };
+
+        const toggleImageByClick = (clickedImage) => {
+          const shouldActivate = !clickedImage.classList.contains('is-active');
+          clearActiveImages();
+          if (shouldActivate) {
+            clickedImage.classList.add('is-active');
+          }
+        };
+
+        difficultImages.forEach((img) => {
+          img.tabIndex = 0;
+          img.addEventListener('click', (event) => {
+            event.stopPropagation();
+            toggleImageByClick(img);
+          });
+          img.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault();
+              toggleImageByClick(img);
+            }
+          });
+        });
+
+        difficultCloud.addEventListener('click', (event) => {
+          if (!(event.target instanceof HTMLImageElement)) {
+            clearActiveImages();
+          }
+        });
+
+        difficultCloud.dataset.toggleBound = 'true';
+      });
+    };
+
+    setupDifficultCloudToggle();
+    Reveal.on('ready', setupDifficultCloudToggle);
+    Reveal.on('slidechanged', setupDifficultCloudToggle);
   </script>
 </body>
 
